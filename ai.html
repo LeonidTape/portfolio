@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="title_ai">Работа с ИИ — Ismet Sidametovich</title>
+  <meta name="description" content="Портфолио работ UI/UX и веб-дизайнера" data-i18n-content="desc_projects">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <div class="language-modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <h2 id="modal-title" data-i18n="modal_title">Выберите язык</h2>
+      <p data-i18n="modal_subtitle">Я позаботился о том, чтобы вам было легче ознакомиться со мной</p>
+      <div class="modal-lang-buttons">
+        <button class="modal-lang-btn" data-lang="ru" type="button">🇷🇺 Русский</button>
+        <button class="modal-lang-btn" data-lang="sr" type="button">🇷🇸 Srpski</button>
+        <button class="modal-lang-btn" data-lang="en" type="button">🇬🇧 English</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="top" data-section="global-header">
+    <div class="top-inner">
+      <a class="brand" href="index.html">sidametovich</a>
+      <nav>
+        <a href="index.html" data-i18n="nav_home">Главная</a>
+        <a href="projects.html" aria-current="page" data-i18n="nav_work">Работы</a>
+        <a href="textme.html" data-i18n="nav_contact">Контакты</a>
+      </nav>
+      <a class="tel" href="tel:+79817094436" data-link="phone" data-link-text>+7 981 709 44 36</a>
+      <div class="language-switch" role="group" data-i18n-label="lang_aria" aria-label="Выбор языка">
+        <button class="lang-btn" data-lang="ru" aria-label="Русский" title="Русский" type="button">RU</button>
+        <button class="lang-btn" data-lang="sr" aria-label="Srpski" title="Srpski" type="button">SR</button>
+        <button class="lang-btn" data-lang="en" aria-label="English" title="English" type="button">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section data-section="ai-s0" class="hero">
+      <h1 class="reveal" data-i18n="ai_title">Работа с искусственным интеллектом</h1>
+      <p class="lead reveal" data-i18n="ai_lead">Изучаю и применяю нейросети в практических задачах</p>
+      <p class="reveal" data-i18n="ai_intro">Генерирую изображения, локально запускаю модели, создаю пайплайны в ComfyUI и интегрирую ИИ в реальные проекты.</p>
+      <img data-img="ai-i0" class="cover reveal" src="https://thb.tildacdn.pub/tild3033-3235-4064-a630-333531343362/-/resize/1200x/ComfyUI_temp_yljbo_0.png" alt="ComfyUI">
+    </section>
+
+    <section data-section="ai-s1">
+      <h2 class="reveal" data-i18n="ai_sec">Что я делаю с ИИ</h2>
+      <ul class="rows stagger"><li><h3><span data-i18n="a1_t">Локальный запуск моделей и настройка окружения</span></h3><p><span data-i18n="a1_d">Разворачиваю модели на своём оборудовании, настраиваю зависимости, оптимизирую работу системы и добиваюсь стабильного рендера без сбоев.</span></p></li><li><h3><span data-i18n="a2_t">Работа в ComfyUI и собственные нодовые пайплайны</span></h3><p><span data-i18n="a2_d">Собираю графовые цепочки для генерации изображений, применяю upscale-модули, post-processing, LoRA и ControlNet для контроля результата.</span></p></li><li><h3><span data-i18n="a3_t">Промпт-инжиниринг и точные текстовые запросы</span></h3><p><span data-i18n="a3_d">Разрабатываю промпты, подбираю стили, уточняю технические параметры и добиваюсь стабильного, предсказуемого результата.</span></p></li><li><h3><span data-i18n="a4_t">Улучшение качества изображений после генерации</span></h3><p><span data-i18n="a4_d">Применяю upscale, корректирую цвет, убираю шумы, дорабатываю детали в Photoshop и вношу композиционные правки.</span></p></li><li><h3><span data-i18n="a5_t">Интеграция нейросетей в проекты и интерфейсы</span></h3><p><span data-i18n="a5_d">Использую ИИ как часть UX-концепций: генерация контента, динамические изображения, ассеты для сайтов и визуальные решения для проектов, например в дипломной работе.</span></p></li><li><h3><span data-i18n="a6_t">Эксперименты с новыми моделями и подходами</span></h3><p><span data-i18n="a6_d">Пробую разные архитектуры, экспериментирую с 3D-генерацией и аниме-стилями и ищу новые решения для визуалов и дизайна.</span></p></li></ul>
+    </section>
+
+    <section data-section="ai-s2">
+      <h2 class="reveal" data-i18n="ai_tools_title">Инструменты</h2>
+      <div class="tiles stagger">
+        <div class="tile"><h3>ComfyUI</h3><p>SDXL, LoRA, ControlNet</p></div>
+        <div class="tile"><h3>Photoshop</h3><p><span data-i18n="ai_tool2_d">AI-upscale модули</span></p></div>
+      </div>
+    </section>
+
+    <section data-section="ai-s3">
+      <a class="btn reveal" href="projects.html" data-i18n="btn_other">К другим проектам</a>
+    </section>
+
+  </main>
+
+  <footer data-section="global-footer">
+    <div class="fn">Ismet Sidametovich</div>
+    <div class="fl">
+      <a href="https://t.me/rozhkov_leonid" data-link="telegram">Telegram</a>
+      <a href="https://vk.com/rozhkovleonid" data-link="vk">VK</a>
+      <a href="mailto:ismetsidametovich@gmail.com" data-link="email" data-i18n="f_email">Почта</a>
+      <a href="tel:+79817094436" data-link="phone" data-i18n="f_phone">Телефон</a>
+      <a href="https://github.com/LeonidTape" data-link="github">GitHub</a>
+      <a href="https://www.youtube.com/@leonidtrapper" data-link="youtube">YouTube</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/works-data.js"></script>
+  <script src="assets/js/works.js"></script>
+  <script src="assets/js/site-config.js"></script>
+  <script src="assets/js/site-config-runtime.js"></script>
+  <script src="assets/js/emoji.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
