@@ -26,22 +26,19 @@ window.SITE_CONFIG = {
       "p_title": "Мои работы",
       "btn_contact": "Может сразу созвон?)",
       "goal1": "Постоянно развиваться на стыке дизайна и разработки, создавая визуально выразительные и функциональные цифровые продукты.",
-      "goal2": "Хочу применять опыт в графическом и UI/UX-дизайне, видеомонтаже, фронтенд- и бэкенд-разработке, сочетая визуальное мышление, технические навыки и современные технологии для реализации проектов от идеи и дизайна до работающего продукта.",
-      "j1_period": "Декабрь 2025 — Сентябрь 2026"
+      "goal2": "Хочу применять опыт в графическом и UI/UX-дизайне, видеомонтаже, фронтенд- и бэкенд-разработке, сочетая визуальное мышление, технические навыки и современные технологии для реализации проектов от идеи и дизайна до работающего продукта."
     },
     "sr": {
       "btn_contact": "Možemo odmah da se čujemo? :)",
       "p_title": "Moji radovi",
       "goal1": "Kontinuirano usavršavanje i razvoj na spoju dizajna i razvoja softvera, uz stvaranje vizuelno upečatljivih i funkcionalnih digitalnih proizvoda.",
-      "goal2": "Želim da primenim svoje iskustvo u grafičkom i UI/UX dizajnu, video-montaži, frontend i backend razvoju, kombinujući vizuelno razmišljanje, tehničke veštine i savremene tehnologije kako bih realizovao projekte od ideje i dizajna do funkcionalnog proizvoda.",
-      "j1_period": "Decembar 2025 – Septembar 2026"
+      "goal2": "Želim da primenim svoje iskustvo u grafičkom i UI/UX dizajnu, video-montaži, frontend i backend razvoju, kombinujući vizuelno razmišljanje, tehničke veštine i savremene tehnologije kako bih realizovao projekte od ideje i dizajna do funkcionalnog proizvoda."
     },
     "en": {
       "btn_contact": "Maybe we could just hop on a call? :)",
       "p_title": "My work",
       "goal1": "To continuously grow at the intersection of design and software development, creating visually compelling and functional digital products.",
-      "goal2": "I aim to apply my experience in graphic and UI/UX design, video editing, frontend and backend development, combining visual thinking, technical skills, and modern technologies to bring projects from initial concept and design to a fully functional product.",
-      "j1_period": "December 2025 – September 2026"
+      "goal2": "I aim to apply my experience in graphic and UI/UX design, video editing, frontend and backend development, combining visual thinking, technical skills, and modern technologies to bring projects from initial concept and design to a fully functional product."
     }
   },
   "images": {

@@ -2685,3 +2685,83 @@ a.contact-card:hover {
   }
 }
 
+
+/* ==========================================================================
+   Баннер согласия на статистику: снизу по центру, один раз при первом входе
+   ========================================================================== */
+
+.stats-banner {
+  position: fixed;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-sizing: border-box;
+  text-align: left;
+  width: min(560px, calc(100% - 32px));
+  padding: 12px 12px 12px 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+  transform: translate(-50%, 24px);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.3, 1), opacity 0.5s ease;
+}
+
+.stats-banner.is-visible {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.stats-banner.is-hidden {
+  transform: translate(-50%, 24px);
+  opacity: 0;
+}
+
+.stats-banner p {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: left;
+  color: var(--muted, #6E6E73);
+}
+
+.stats-banner button {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 9px 18px;
+  line-height: 1.2;
+  text-align: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #FFFFFF;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.stats-banner button:hover {
+  background: var(--accent-hover);
+}
+
+@media (max-width: 600px) {
+  .stats-banner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .stats-banner button {
+    width: 100%;
+  }
+}
