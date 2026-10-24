@@ -130,7 +130,7 @@ window.WORKS = [
   },
   {
     "id": "project-lt-project",
-    "year": "",
+    "year": "2023",
     "tags": [
       "motion",
       "video"
@@ -222,7 +222,7 @@ window.WORKS = [
   },
   {
     "id": "project-pokaduedem",
-    "year": "",
+    "year": "2025",
     "tags": [
       "games",
       "web"
@@ -292,7 +292,7 @@ window.WORKS = [
   },
   {
     "id": "project-pulse-pistons",
-    "year": "",
+    "year": "2025",
     "tags": [
       "uiux",
       "web",
@@ -610,7 +610,7 @@ window.WORKS = [
   },
   {
     "id": "project-video-editing",
-    "year": "",
+    "year": "2019-2025",
     "tags": [
       "video",
       "motion"
@@ -684,7 +684,7 @@ window.WORKS = [
   },
   {
     "id": "project-ai",
-    "year": "",
+    "year": "2025",
     "tags": [
       "ai",
       "graphic"
@@ -868,7 +868,7 @@ window.WORKS = [
   },
   {
     "id": "project-razlom",
-    "year": "",
+    "year": "2024",
     "tags": [
       "video"
     ],
