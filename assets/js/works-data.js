@@ -1,6 +1,4 @@
-/* Работы: данные страницы «Работы» и страниц отдельных проектов.
- * Тексты на трёх языках (ru, sr, en). Теги — ключи из WORK_TAGS, у проекта может быть несколько.
- * Файл можно править вручную. Сгенерирован из архива projects.zip. */
+/* Работы и карточки сайта. Файл ведёт админка (папка admin/) или его можно править вручную. */
 window.WORK_TAGS = {
   "backend": {
     "ru": "Backend",
@@ -123,7 +121,12 @@ window.WORKS = [
           "en": "main.py is long: all of the interface logic lives in one main() function. It should be split into classes, one per screen.\nModules are imported with try/except ImportError falling back to None, and then checked with hasattr everywhere. This hides errors that should be shown right away.\nThe code that gets the data folder is repeated in many places. It could go into one shared module.\nrequirements.txt contains build tools and unnecessary dependencies, such as Flask, Bottle, Werkzeug and gevent. They seem to be left over from other experiments. The file is saved in UTF-16, which can get in the way of pip install -r.\nThe stop and restart functions rely on the PID in the file. If the bot crashes on its own, the file stays behind and control can get out of sync."
         }
       }
-    ]
+    ],
+    "cardId": "",
+    "featured": false,
+    "href": "",
+    "newTab": false,
+    "links": []
   },
   {
     "id": "project-lt-project",
@@ -210,7 +213,12 @@ window.WORKS = [
           "en": "The result is a video in a bright game style with many UI animations and careful attention to detail. The work shows my skills as a motion designer: I can make visually rich videos where the interface, music and editing work together."
         }
       }
-    ]
+    ],
+    "cardId": "",
+    "featured": false,
+    "href": "",
+    "newTab": false,
+    "links": []
   },
   {
     "id": "project-pokaduedem",
@@ -275,7 +283,12 @@ window.WORKS = [
           "en": "I designed and developed the game as part of a larger concept of an interactive car publication. I combined the game mechanics, interface elements and web technologies into a working game prototype.\nTools: HTML, CSS, JavaScript, ChatGPT, GitHub Copilot"
         }
       }
-    ]
+    ],
+    "cardId": "",
+    "featured": false,
+    "href": "",
+    "newTab": false,
+    "links": []
   },
   {
     "id": "project-pulse-pistons",
@@ -385,7 +398,12 @@ window.WORKS = [
           "en": "The project brought together design, technology and AI work into a single system. Along the way I strengthened my UI/UX skills, learned to build complex interfaces, work within the constraints of a platform, and create projects where visuals, functionality and interactivity work as one whole."
         }
       }
-    ]
+    ],
+    "featured": true,
+    "cardId": "",
+    "href": "",
+    "newTab": false,
+    "links": []
   },
   {
     "id": "project-revolution",
@@ -492,7 +510,12 @@ window.WORKS = [
           "en": "I would write a proper bot on a current version of discord.js with slash commands and an official bot token. Permissions would be checked with a role model, and the config and secrets would live in a .env file. The code would be split into shared utilities without duplication and covered with tests."
         }
       }
-    ]
+    ],
+    "cardId": "",
+    "featured": false,
+    "href": "",
+    "newTab": false,
+    "links": []
   },
   {
     "id": "project-webregistry",
@@ -578,7 +601,12 @@ window.WORKS = [
           "en": "I developed the project myself. I wrote both the backend and the frontend, designed the database schema, the role system and the production statuses, as well as the Excel import and export. The interface is built without frameworks, and the layout and styles are tuned for desktop work."
         }
       }
-    ]
+    ],
+    "featured": true,
+    "cardId": "",
+    "href": "",
+    "newTab": false,
+    "links": []
   },
   {
     "id": "project-video-editing",
@@ -647,7 +675,12 @@ window.WORKS = [
           "en": "The final versions of the videos are published on YouTube. The original project files were lost when I replaced my laptop, so the portfolio relies on the published videos."
         }
       }
-    ]
+    ],
+    "cardId": "",
+    "featured": false,
+    "href": "",
+    "newTab": false,
+    "links": []
   },
   {
     "id": "project-ai",
@@ -720,7 +753,12 @@ window.WORKS = [
           "en": "ComfyUI, SDXL, LoRA, ControlNet, Photoshop, AI upscale modules."
         }
       }
-    ]
+    ],
+    "cardId": "",
+    "featured": false,
+    "href": "",
+    "newTab": false,
+    "links": []
   },
   {
     "id": "project-university-department",
@@ -821,7 +859,12 @@ window.WORKS = [
           "en": "Illustrator, Photoshop."
         }
       }
-    ]
+    ],
+    "cardId": "",
+    "featured": false,
+    "href": "",
+    "newTab": false,
+    "links": []
   },
   {
     "id": "project-razlom",
@@ -881,9 +924,14 @@ window.WORKS = [
           "en": "The project was stopped after four episodes. It is an honestly labeled unfinished project that shows the concept, the visual language and the ability to build a story without words."
         }
       }
-    ]
+    ],
+    "cardId": "",
+    "featured": false,
+    "href": "",
+    "newTab": false,
+    "links": []
   }
-];;
+];
 window.WORKS_SETTINGS = {"cardSize": "large"};
 window.CARDS = [
   {

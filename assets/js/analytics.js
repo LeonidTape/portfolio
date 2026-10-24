@@ -7,7 +7,7 @@
  */
 (function () {
   // Адрес Cloudflare Worker из worker/README.md. Пока пусто — ничего не отправляется.
-  var ENDPOINT = 'https://site-visits.leonidtrapper.workers.dev';
+  var ENDPOINT = 'https://site-visits.leonidtrapper.workers.dev/';
   var NOTICE_KEY = 'stats-notice-seen';
   var ID_KEY = 'stats-visitor';
 
