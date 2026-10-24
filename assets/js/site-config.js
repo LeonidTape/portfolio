@@ -24,19 +24,27 @@ window.SITE_CONFIG = {
   "texts": {
     "ru": {
       "p_title": "Мои работы",
-      "btn_contact": "Может сразу созвон?)"
+      "btn_contact": "Может сразу созвон?)",
+      "goal1": "Постоянно развиваться на стыке дизайна и разработки, создавая визуально выразительные и функциональные цифровые продукты.",
+      "goal2": "Хочу применять опыт в графическом и UI/UX-дизайне, видеомонтаже, фронтенд- и бэкенд-разработке, сочетая визуальное мышление, технические навыки и современные технологии для реализации проектов от идеи и дизайна до работающего продукта."
     },
     "sr": {
       "btn_contact": "Možemo odmah da se čujemo? :)",
-      "p_title": "Moji radovi"
+      "p_title": "Moji radovi",
+      "goal1": "Kontinuirano usavršavanje i razvoj na spoju dizajna i razvoja softvera, uz stvaranje vizuelno upečatljivih i funkcionalnih digitalnih proizvoda.",
+      "goal2": "Želim da primenim svoje iskustvo u grafičkom i UI/UX dizajnu, video-montaži, frontend i backend razvoju, kombinujući vizuelno razmišljanje, tehničke veštine i savremene tehnologije kako bih realizovao projekte od ideje i dizajna do funkcionalnog proizvoda."
     },
     "en": {
       "btn_contact": "Maybe we could just hop on a call? :)",
-      "p_title": "My work"
+      "p_title": "My work",
+      "goal1": "To continuously grow at the intersection of design and software development, creating visually compelling and functional digital products.",
+      "goal2": "I aim to apply my experience in graphic and UI/UX design, video editing, frontend and backend development, combining visual thinking, technical skills, and modern technologies to bring projects from initial concept and design to a fully functional product."
     }
   },
   "images": {
-    "index-i0": "assets/uploads/site/1791835863269-068df473-9ec6-4d86-80a4-7c17933451f5.webp"
+    "index-i0": "assets/uploads/site/1791835863269-068df473-9ec6-4d86-80a4-7c17933451f5.webp",
+    "index-i1": "assets/uploads/site/1792815504039-AmjM1gP4RuZsGehLxlpgeX9wgiku0zFkUYAPSZfH.webp",
+    "index-i2": "assets/uploads/site/1792815507289-c9yQfsou6Nytxre0PmSpoSihGAnsp-aplc9MT_4T.webp"
   },
   "custom": {
     "textme.html": [],
@@ -57,8 +65,8 @@ window.SITE_CONFIG = {
     "images": {}
   },
   "favicon": {
-    "icon": "assets/uploads/site/1791835623839-favicon-512.png",
-    "apple": "assets/uploads/site/1791835623854-apple-touch-icon.png"
+    "icon": "assets/uploads/site/1792814833040-favicon-512.png",
+    "apple": "assets/uploads/site/1792814833057-apple-touch-icon.png"
   },
   "contactCards": [
     {
@@ -232,5 +240,15 @@ window.SITE_CONFIG = {
       "text": ""
     },
     "custom": []
+  },
+  "specials": {
+    "skills": [],
+    "contacts": [
+      "card-mv5ntnj5"
+    ]
+  },
+  "extra": {
+    "tools": [],
+    "education": []
   }
 };

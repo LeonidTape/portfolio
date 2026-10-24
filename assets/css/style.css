@@ -9,8 +9,8 @@
   --text: #1D1D1F;
   --text-2: #6E6E73;
   --text-3: #86868B;
-  --accent: #0071E3;
-  --accent-hover: #0077ED;
+  --accent: #2E7D5B;
+  --accent-hover: #266B4D;
   --line: #D2D2D7;
   --line-soft: #E8E8ED;
 
@@ -87,7 +87,7 @@ button {
 }
 
 ::selection {
-  background: rgba(0, 113, 227, 0.18);
+  background: rgba(46, 125, 91, 0.18);
 }
 
 /* ==========================================================================
@@ -455,13 +455,13 @@ b {
   font-size: 17px;
   font-weight: 500;
   letter-spacing: -0.01em;
-  box-shadow: 0 2px 10px rgba(0, 113, 227, 0.22);
+  box-shadow: 0 2px 10px rgba(46, 125, 91, 0.22);
 }
 
 .btn:hover {
   background: var(--accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.3);
+  box-shadow: 0 6px 18px rgba(46, 125, 91, 0.3);
 }
 
 .btn:active {
@@ -2047,3 +2047,641 @@ a.contact-card:hover {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* ==========================================================================
+   Главная: стопка бейджиков с фото и должностью
+   ========================================================================== */
+
+.badge-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding-top: 8px;
+}
+
+.badge-stack {
+  position: relative;
+  width: 240px;
+  height: 320px;
+  perspective: 900px;
+  transform-style: preserve-3d;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 12px 18px;
+  border-radius: 24px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+  transform-origin: 50% 0%;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 0.8, 0.3, 1),
+    opacity 0.6s ease,
+    box-shadow 0.9s ease;
+  will-change: transform, opacity;
+}
+
+.badge-photo {
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.badge-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  display: block;
+  pointer-events: none;
+}
+
+.badge-role {
+  margin: 14px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-align: center;
+  transition: opacity 0.4s ease;
+}
+
+/* Позиции в стопке в 3D: 0 — спереди, 1 — чуть сзади, 2 — самый дальний */
+.badge[data-pos="0"] {
+  z-index: 3;
+  transform: translate3d(0, 0, 20px) rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+.badge[data-pos="1"] {
+  z-index: 2;
+  transform: translate3d(16px, 14px, 10px) rotate(4deg) scale(0.95);
+  opacity: 0.85;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.badge[data-pos="2"] {
+  z-index: 1;
+  transform: translate3d(-14px, 26px, 0) rotate(-3deg) scale(0.9);
+  opacity: 0.55;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.badge-dots {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  min-height: 24px;
+}
+
+/* Точка-переключатель. Хитбокс шире видимой точки: ::before растянут на 14px во все стороны */
+.badge-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--surface-2);
+  cursor: pointer;
+  transition: width 0.5s cubic-bezier(0.22, 0.8, 0.3, 1), background 0.4s ease;
+}
+
+.badge-dot::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+}
+
+.badge-dot.is-active {
+  width: 22px;
+}
+
+.badge-dot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 14px;
+}
+
+/* Прогресс до следующего перелистывания: заполняется внутри активной точки */
+.badge-dot-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.badge-dot.is-active .badge-dot-fill {
+  animation: badge-dot-fill var(--badge-delay, 3.8s) linear forwards;
+}
+
+.badge-wrap:hover .badge-dot-fill {
+  animation-play-state: paused;
+}
+
+.badge-wrap.is-static .badge-dot-fill {
+  animation: none;
+  transform: scaleX(0);
+}
+
+@keyframes badge-dot-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (max-width: 600px) {
+  .badge-stack {
+    width: 220px;
+    height: 296px;
+  }
+}
+
+/* Подпись рядом с бейджем меняется вместе с активной карточкой */
+.role {
+  display: grid;
+  justify-items: center;
+}
+
+.role-item {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 0.8, 0.3, 1);
+}
+
+.role-item.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Страница «Работы»: фильтры по тегам и карточки проектов
+   ========================================================================== */
+
+.projects-section {
+  margin-top: 8px;
+}
+
+.p-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 0 36px;
+}
+
+.p-filter {
+  padding: 9px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: var(--text, #1D1D1F);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.p-filter:hover {
+  border-color: var(--accent);
+}
+
+.p-filter.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #FFFFFF;
+}
+
+.p-filter:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.p-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.p-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.3, 1), box-shadow 0.5s ease;
+}
+
+.p-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.p-card-media {
+  aspect-ratio: 16 / 10;
+  background: var(--surface, #F5F5F7);
+  overflow: hidden;
+}
+
+.p-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.p-card:hover .p-card-media img {
+  transform: scale(1.03);
+}
+
+.p-card-media.is-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-card-initial {
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.35;
+}
+
+.p-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  padding: 20px 22px 22px;
+}
+
+.p-card-year {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted, #6E6E73);
+}
+
+.p-card-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.p-card-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted, #6E6E73);
+}
+
+.p-card-more {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.p-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.p-tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--surface, #F5F5F7);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted, #6E6E73);
+}
+
+.p-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 0;
+  color: var(--muted, #6E6E73);
+}
+
+.p-empty .p-filter {
+  margin-top: 12px;
+}
+
+/* Страница отдельного проекта */
+.w-tags {
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.w-video {
+  margin: 28px 0;
+}
+
+.w-video video {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  background: #000;
+}
+
+.w-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--muted, #6E6E73);
+  text-align: center;
+}
+
+.btn-back {
+  margin-top: 48px;
+}
+
+@media (max-width: 600px) {
+  .p-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Особые карты (как в Balatro): радужная кромка, голографический блеск,
+   наклон и блик за курсором. Класс .is-special ставится на карточку:
+   выделенная работа, навык или карточка контактов (см. special-cards.js).
+   ========================================================================== */
+
+.p-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-item > .p-card {
+  flex: 1;
+}
+
+.p-filters-years {
+  margin-bottom: 14px;
+}
+
+.is-special:is(.p-card, .tile, .contact-card) {
+  position: relative;
+  isolation: isolate;
+  transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.3, 1), box-shadow 0.5s ease;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+  will-change: transform;
+}
+
+.is-special:is(.p-card, .tile, .contact-card):hover {
+  transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-3px);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Радужная кромка */
+.is-special::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(120deg, #FF6AD5, #FFD166, #6EE7B7, #60A5FA, #C084FC, #FF6AD5);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+  animation: special-edge 6s linear infinite alternate;
+}
+
+/* Голографический блеск: радуга движется, блик следует за курсором */
+.is-special::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.55), transparent 42%),
+    linear-gradient(115deg, transparent 22%, rgba(255, 0, 140, 0.22) 36%, rgba(255, 220, 0, 0.24) 46%,
+      rgba(0, 255, 200, 0.22) 56%, rgba(130, 80, 255, 0.22) 66%, transparent 80%);
+  background-size: 100% 100%, 260% 260%;
+  mix-blend-mode: overlay;
+  animation: special-foil 5s ease-in-out infinite alternate;
+}
+
+.is-special > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes special-edge {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes special-foil {
+  0% { background-position: 0 0, 0% 50%; }
+  100% { background-position: 0 0, 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-special,
+  .is-special::before,
+  .is-special::after {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Фон первого экрана главной: дрейфующие цветовые пятна и точечная сетка,
+   которая растворяется книзу. Только для .hero-home, остальной сайт не меняется.
+   ========================================================================== */
+
+.hero-home,
+.hero-bg {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-home::before,
+.hero-home::after,
+.hero-bg::before,
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Цветовые пятна */
+.hero-home::before,
+.hero-bg::before {
+  inset: -10% -5% 0 -5%;
+  background:
+    radial-gradient(38% 42% at 18% 22%, rgba(46, 125, 91, 0.16), transparent 70%),
+    radial-gradient(34% 40% at 82% 16%, rgba(56, 189, 248, 0.14), transparent 70%),
+    radial-gradient(30% 36% at 60% 58%, rgba(167, 139, 250, 0.10), transparent 70%);
+  filter: blur(18px);
+  animation: hero-blobs 22s ease-in-out infinite alternate;
+}
+
+/* Точечная сетка, растворяется книзу */
+.hero-home::after,
+.hero-bg::after {
+  inset: 0;
+  background-image: radial-gradient(rgba(29, 29, 31, 0.10) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.35) 45%, transparent 85%);
+          mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.35) 45%, transparent 85%);
+}
+
+@keyframes hero-blobs {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(2%, 3%, 0) scale(1.04); }
+  100% { transform: translate3d(-2%, 1%, 0) scale(0.98); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-home::before,
+  .hero-bg::before { animation: none; }
+}
+
+/* ==========================================================================
+   Футер: крупная надпись sidametovich в цветах проекта, внизу страницы.
+   Ссылки сверху, надпись обрезается по нижнему краю.
+   ========================================================================== */
+
+.site-foot {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: none;
+  margin: var(--gap-xl) 0 0;
+  padding: var(--gap-lg) var(--pad) 0;
+  border-top: 0;
+  display: block;
+}
+
+.site-foot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 70% at 50% 115%, rgba(46, 125, 91, 0.16), transparent 70%),
+    radial-gradient(40% 50% at 15% 0%, rgba(56, 189, 248, 0.08), transparent 70%);
+}
+
+.sf-top {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  padding-top: var(--gap-md);
+  padding-bottom: var(--gap-md);
+  border-top: 1px solid var(--line-soft);
+}
+
+.site-foot .fl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.sf-mark {
+  margin: var(--gap-lg) -2% -0.16em;
+  font-size: clamp(56px, 12.5vw, 170px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  white-space: nowrap;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+  background: linear-gradient(100deg, var(--accent) 0%, #6EE7B7 45%, var(--accent) 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: sf-shine 9s ease-in-out infinite alternate;
+}
+
+@keyframes sf-shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-mark { animation: none; }
+}
+
+/* Дополнительные инструменты и места образования из админки */
+.chips li.is-extra {
+  border-style: dashed;
+}
+
+/* ==========================================================================
+   Встроенное видео ВК: адаптивная рамка 16:9 на любом экране
+   ========================================================================== */
+
+.w-embed {
+  margin: 28px 0;
+}
+
+.w-embed-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: var(--shadow-md);
+}
+
+.w-embed-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.w-embed figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--muted, #6E6E73);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .w-embed-frame {
+    border-radius: 12px;
+  }
+}
+

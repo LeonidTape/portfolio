@@ -128,6 +128,7 @@
   /* ---------- иконка вкладки ---------- */
   (function applyFavicon() {
     var fav = cfg.favicon || {};
+    if (document.querySelector('[data-favicon-static]')) return; // статичные ссылки уже в HTML
     var links = [['icon', 'icon', 'image/png'], ['apple', 'apple-touch-icon', 'image/png']];
     links.forEach(function (x) {
       if (!fav[x[0]]) return;
@@ -240,11 +241,58 @@
         (text ? '<p>' + esc(text).replace(/\n/g, '<br>') + '</p>' : '') +
         (c.link && label ? '<span class="cc-link">' + esc(label) + ' →</span>' : '') + '</div>';
       var href = resolveHref(c.link);
-      var cls = 'contact-card' + (href ? ' is-link' : '');
+      var special = ((cfg.specials && cfg.specials.contacts) || []).indexOf(c.id) !== -1;
+      var cls = 'contact-card' + (href ? ' is-link' : '') + (special ? ' is-special' : '');
       return href
         ? '<a class="' + cls + '" data-card-index="' + i + '"' + contactStyle(c) + ' href="' + esc(href) + '"' + (/^https?:/.test(href) ? ' target="_blank" rel="noopener"' : '') + '>' + inner + '</a>'
         : '<article class="' + cls + '" data-card-index="' + i + '"' + contactStyle(c) + '>' + inner + '</article>';
     }).join('');
+  }
+
+  function applySkillSpecials() {
+    var list = (cfg.specials && cfg.specials.skills) || [];
+    document.querySelectorAll('.tile[data-skill]').forEach(function (t) {
+      t.classList.toggle('is-special', list.indexOf(t.dataset.skill) !== -1);
+    });
+  }
+
+  // Дополнительные инструменты и места образования, которые добавлены в админке
+  function applyExtras() {
+    document.querySelectorAll('[data-extra-added]').forEach(function (n) { n.parentNode.removeChild(n); });
+    var ex = cfg.extra || {};
+    var l = lang();
+    var chips = document.querySelector('[data-section="index-s3"] .chips');
+    if (chips) (ex.tools || []).forEach(function (t) {
+      var li = document.createElement('li');
+      li.className = 'is-extra';
+      li.textContent = t;
+      li.setAttribute('data-extra-added', '');
+      chips.appendChild(li);
+    });
+    var edu = document.querySelector('[data-section="index-s5"]');
+    if (edu) (ex.education || []).forEach(function (e) {
+      var art = document.createElement('article');
+      art.className = 'job';
+      art.setAttribute('data-extra-added', '');
+      var when = document.createElement('div');
+      when.className = 'when';
+      when.textContent = pick(e.period, l);
+      var body = document.createElement('div');
+      var h = document.createElement('h3');
+      h.textContent = pick(e.school, l);
+      var d = document.createElement('p');
+      d.textContent = pick(e.degree, l);
+      body.appendChild(h);
+      body.appendChild(d);
+      if (pick(e.note, l)) {
+        var n = document.createElement('p');
+        n.textContent = pick(e.note, l);
+        body.appendChild(n);
+      }
+      art.appendChild(when);
+      art.appendChild(body);
+      edu.appendChild(art);
+    });
   }
 
   function applyLayout() {
@@ -282,9 +330,13 @@
     applyLayout();
     applyLinks();
     renderContactCards();
+    applySkillSpecials();
+    applyExtras();
   });
   document.addEventListener('languagechange', function () {
     applyLayout();
     renderContactCards();
+    applySkillSpecials();
+    applyExtras();
   });
 })();

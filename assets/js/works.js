@@ -79,6 +79,13 @@
 
   /* ---------- блоки страницы ---------- */
 
+  // Ссылка на видео ВК (vkvideo.ru или vk.com) -> адрес встраивания
+  function vkEmbedUrl(url) {
+    var m = String(url || '').match(/video(-?\d+)_(\d+)/);
+    if (!m) return '';
+    return 'https://vk.com/video_ext.php?oid=' + m[1] + '&id=' + m[2] + '&hd=2';
+  }
+
   function renderBlock(b, lang, base) {
     if (b.type === 'text') {
       var heading = pick(b.heading, lang);
@@ -100,6 +107,17 @@
 
     if (b.type === 'cards') {
       return renderCardsBlock(lang, base);
+    }
+
+    if (b.type === 'embed') {
+      var embed = vkEmbedUrl(b.url);
+      if (!embed) return '';
+      var ecap = pick(b.caption, lang);
+      return '<figure class="w-embed"><div class="w-embed-frame">' +
+        '<iframe src="' + esc(embed) + '" title="' + esc(ecap || pick(b.title, lang) || 'Video') + '" ' +
+        'allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock" ' +
+        'allowfullscreen loading="lazy"></iframe></div>' +
+        (ecap ? '<figcaption>' + esc(ecap) + '</figcaption>' : '') + '</figure>';
     }
 
     if (b.type === 'carousel') {
@@ -128,6 +146,19 @@
     return '';
   }
 
+  function tagLabel(t, lang) {
+    var x = (window.WORK_TAGS || {})[t];
+    return x ? pick(x, lang) : t;
+  }
+
+  function tagsHtml(work, lang) {
+    var tags = Array.isArray(work.tags) ? work.tags : [];
+    if (!tags.length) return '';
+    return '<div class="p-tags w-tags">' + tags.map(function (t) {
+      return '<span class="p-tag">' + esc(tagLabel(t, lang)) + '</span>';
+    }).join('') + '</div>';
+  }
+
   /* ---------- страница работы ---------- */
 
   function renderPage(work, o) {
@@ -141,6 +172,7 @@
       (work.year ? '<p class="role">' + esc(work.year) + '</p>' : '') +
       '<h1>' + esc(title) + '</h1>' +
       (summary ? '<p class="lead">' + esc(summary) + '</p>' : '') +
+      tagsHtml(work, lang) +
       (work.cover ? '<img class="cover" src="' + esc(src(work.cover, base)) + '" alt="' + esc(title) + '">' : '') +
       '</div>';
 
@@ -503,6 +535,7 @@
   document.addEventListener('languagechange', refresh);
 
   window.Works = {
+    tagLabel: tagLabel,
     renderCard: renderCard,
     renderPage: renderPage,
     renderBlock: renderBlock,

@@ -12,6 +12,10 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
   <script>document.documentElement.classList.add('js');</script>
+  <!-- favicon:start -->
+  <link rel="icon" type="image/png" href="assets/uploads/site/1792814833040-favicon-512.png" data-favicon-static>
+  <link rel="apple-touch-icon" href="assets/uploads/site/1792814833057-apple-touch-icon.png" data-favicon-static>
+  <!-- favicon:end -->
 </head>
 <body>
   <div class="language-modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -34,7 +38,6 @@
         <a href="projects.html" data-i18n="nav_work">Работы</a>
         <a href="textme.html" data-i18n="nav_contact">Контакты</a>
       </nav>
-      <a class="tel" href="tel:+79817094436" data-link="phone" data-link-text>+7 981 709 44 36</a>
       <div class="language-switch" role="group" data-i18n-label="lang_aria" aria-label="Выбор языка">
         <button class="lang-btn" data-lang="ru" aria-label="Русский" title="Русский" type="button">RU</button>
         <button class="lang-btn" data-lang="sr" aria-label="Srpski" title="Srpski" type="button">SR</button>
@@ -47,11 +50,29 @@
 
     <section data-section="index-s0" class="hero hero-home">
       <div class="profile-layout">
-        <div class="profile-photo reveal">
-          <img data-img="index-i0" alt="Ismet Sidametovich" src="assets/img/profile-placeholder.jpg">
+        <div class="badge-wrap reveal">
+          <div class="badge-stack" aria-roledescription="carousel">
+            <div class="badge" data-pos="0">
+              <div class="badge-photo"><img data-img="index-i0" alt="Ismet Sidametovich" src="assets/img/profile-placeholder.jpg"></div>
+              <p class="badge-role" data-i18n="role_ux">UI/UX Designer</p>
+            </div>
+            <div class="badge" data-pos="1">
+              <div class="badge-photo"><img data-img="index-i1" alt="" src="assets/uploads/site/card-python.jpg"></div>
+              <p class="badge-role" data-i18n="role_back">Backend Developer</p>
+            </div>
+            <div class="badge" data-pos="2">
+              <div class="badge-photo"><img data-img="index-i2" alt="" src="assets/img/profile-placeholder.jpg"></div>
+              <p class="badge-role" data-i18n="role_front">Frontend Developer</p>
+            </div>
+          </div>
+          <div class="badge-dots">
+            <button type="button" class="badge-dot" data-index="0" aria-label="1"><span class="badge-dot-fill"></span></button>
+            <button type="button" class="badge-dot" data-index="1" aria-label="2"><span class="badge-dot-fill"></span></button>
+            <button type="button" class="badge-dot" data-index="2" aria-label="3"><span class="badge-dot-fill"></span></button>
+          </div>
         </div>
         <div class="profile-copy">
-          <p class="role reveal" data-i18n="role">UI/UX и Web дизайнер</p>
+          <p class="role reveal"><span class="role-item is-active" data-i18n="role_ux">UI/UX Designer</span><span class="role-item" data-i18n="role_back">Backend Developer</span><span class="role-item" data-i18n="role_front">Frontend Developer</span></p>
           <h1 class="reveal" data-i18n="name">Исмет Фетляев</h1>
           <div class="goal reveal">
             <h2 data-i18n="goal_title">Моя цель</h2>
@@ -65,7 +86,7 @@
 
     <section data-section="index-s1">
       <h2 class="reveal" data-i18n="skills_title">Ключевые навыки</h2>
-      <div class="tiles stagger"><div class="tile"><h3><span data-i18n="sk1_t">Графический дизайн</span></h3><p><span data-i18n="sk1_d">Разработка баннеров, карточек, иллюстраций, обложек; уверенная работа с цветом, композицией и типографикой.</span></p></div><div class="tile"><h3><span data-i18n="sk2_t">UI/UX</span></h3><p><span data-i18n="sk2_d">Проектирование и оформление веб-интерфейсов, прототипирование, дизайн лонгридов, адаптивные макеты.</span></p></div><div class="tile"><h3><span data-i18n="sk3_t">Веб-дизайн и верстка</span></h3><p><span data-i18n="sk3_d">Readymag, HTML/CSS/JS, создание визуально целостных сайтов, лонгридов и журналов.</span></p></div><div class="tile"><h3><span data-i18n="sk4_t">Видео и анимация</span></h3><p><span data-i18n="sk4_d">Монтаж, цветокоррекция, анимация интерфейсов, сценарий, озвучка, работа с переходами и эффектами.</span></p></div><div class="tile"><h3><span data-i18n="sk5_t">Нейросети</span></h3><p><span data-i18n="sk5_d">Локальный запуск моделей, работа в ComfyUI, промпт-инжиниринг, интеграция ИИ в веб-проекты.</span></p></div><div class="tile"><h3><span data-i18n="sk6_t">Техническая грамотность</span></h3><p><span data-i18n="sk6_d">Уверенный пользователь ПК, системное мышление, умение решать нестандартные технические задачи.</span></p></div><div class="tile"><h3><span data-i18n="sk7_t">Креатив и анализ</span></h3><p><span data-i18n="sk7_d">Развитый визуальный вкус, внимание к деталям, умение замечать и исправлять композиционные ошибки.</span></p></div></div>
+      <div class="tiles stagger"><div class="tile" data-skill="sk1"><h3><span data-i18n="sk1_t">Графический дизайн</span></h3><p><span data-i18n="sk1_d">Разработка баннеров, карточек, иллюстраций, обложек; уверенная работа с цветом, композицией и типографикой.</span></p></div><div class="tile" data-skill="sk2"><h3><span data-i18n="sk2_t">UI/UX</span></h3><p><span data-i18n="sk2_d">Проектирование и оформление веб-интерфейсов, прототипирование, дизайн лонгридов, адаптивные макеты.</span></p></div><div class="tile" data-skill="sk3"><h3><span data-i18n="sk3_t">Веб-дизайн и верстка</span></h3><p><span data-i18n="sk3_d">Readymag, HTML/CSS/JS, создание визуально целостных сайтов, лонгридов и журналов.</span></p></div><div class="tile" data-skill="sk4"><h3><span data-i18n="sk4_t">Видео и анимация</span></h3><p><span data-i18n="sk4_d">Монтаж, цветокоррекция, анимация интерфейсов, сценарий, озвучка, работа с переходами и эффектами.</span></p></div><div class="tile" data-skill="sk5"><h3><span data-i18n="sk5_t">Нейросети</span></h3><p><span data-i18n="sk5_d">Локальный запуск моделей, работа в ComfyUI, промпт-инжиниринг, интеграция ИИ в веб-проекты.</span></p></div><div class="tile" data-skill="sk6"><h3><span data-i18n="sk6_t">Техническая грамотность</span></h3><p><span data-i18n="sk6_d">Уверенный пользователь ПК, системное мышление, умение решать нестандартные технические задачи.</span></p></div><div class="tile" data-skill="sk7"><h3><span data-i18n="sk7_t">Креатив и анализ</span></h3><p><span data-i18n="sk7_d">Развитый визуальный вкус, внимание к деталям, умение замечать и исправлять композиционные ошибки.</span></p></div></div>
     </section>
 
     <section data-section="index-s2">
@@ -97,9 +118,10 @@
 
   </main>
 
-  <footer data-section="global-footer">
-    <div class="fn">Ismet Sidametovich</div>
-    <div class="fl">
+  <footer class="site-foot" data-section="global-footer">
+    <div class="sf-top">
+      <div class="fn">Ismet Sidametovich</div>
+      <div class="fl">
       <a href="https://t.me/rozhkov_leonid" data-link="telegram">Telegram</a>
       <a href="https://vk.com/rozhkovleonid" data-link="vk">VK</a>
       <a href="mailto:ismetsidametovich@gmail.com" data-link="email" data-i18n="f_email">Почта</a>
@@ -107,6 +129,8 @@
       <a href="https://github.com/LeonidTape" data-link="github">GitHub</a>
       <a href="https://www.youtube.com/@leonidtrapper" data-link="youtube">YouTube</a>
     </div>
+    </div>
+    <div class="sf-mark" aria-hidden="true">sidametovich</div>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -119,6 +143,8 @@
   <script src="assets/js/site-config.js"></script>
   <script src="assets/js/site-config-runtime.js"></script>
   <script src="assets/js/emoji.js"></script>
+  <script src="assets/js/badge-carousel.js"></script>
+  <script src="assets/js/special-cards.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
