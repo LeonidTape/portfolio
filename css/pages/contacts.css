@@ -1,0 +1,37 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 680px;
+  padding-bottom: 32px;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.contact:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.contact:hover .contact__value {
+  color: var(--color-accent);
+}
+
+.contact__label {
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+.contact__value {
+  font-size: 17px;
+  font-weight: 500;
+  transition: color var(--motion-fast) ease;
+}
