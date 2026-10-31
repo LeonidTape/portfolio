@@ -1,0 +1,13 @@
+name = "site-visits"
+main = "worker.js"
+compatibility_date = "2024-09-01"
+
+# KV-хранилище: создаётся командой `npx wrangler kv namespace create VISITS`,
+# а полученный id вставляется сюда.
+[[kv_namespaces]]
+binding = "VISITS"
+id = "PASTE_KV_NAMESPACE_ID_HERE"
+
+[vars]
+# Адреса сайта, с которых разрешены запросы (через запятую, без / в конце)
+ALLOWED_ORIGINS = "https://YOUR-SITE.github.io"

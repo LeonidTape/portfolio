@@ -930,6 +930,99 @@ window.WORKS = [
     "href": "",
     "newTab": false,
     "links": []
+  },
+  {
+    "id": "project-nta",
+    "year": "",
+    "tags": [
+      "graphic"
+    ],
+    "cover": "assets/uploads/works/nta/1.webp",
+    "title": {
+      "ru": "Национальная Транспортная Ассоциация (НТА)",
+      "sr": "Nacionalna transportna asocijacija (NTA)",
+      "en": "National Transport Association (NTA)"
+    },
+    "summary": {
+      "ru": "Макеты, допечатная подготовка и постпечатная обработка графической, печатной и пластиковой продукции.",
+      "sr": "Makete, predštampna priprema i postpresna obrada grafičkih, štampanih i plastičnih proizvoda.",
+      "en": "Layouts, prepress and post-press processing of graphic, print and plastic products."
+    },
+    "blocks": [
+      {
+        "type": "carousel",
+        "items": [
+          {
+            "src": "assets/uploads/works/nta/1.webp",
+            "caption": {}
+          },
+          {
+            "src": "assets/uploads/works/nta/2.webp",
+            "caption": {}
+          },
+          {
+            "src": "assets/uploads/works/nta/3.webp",
+            "caption": {}
+          },
+          {
+            "src": "assets/uploads/works/nta/4.webp",
+            "caption": {}
+          },
+          {
+            "src": "assets/uploads/works/nta/5.webp",
+            "caption": {}
+          },
+          {
+            "src": "assets/uploads/works/nta/6.webp",
+            "caption": {}
+          },
+          {
+            "src": "assets/uploads/works/nta/7.webp",
+            "caption": {}
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": {},
+        "text": {
+          "ru": "Полный цикл сопровождения графической, печатной и пластиковой продукции: от разработки макетов и допечатной подготовки до контроля тиражирования и постпечатной обработки. Включает взаимодействие с подрядчиками и производством.",
+          "sr": "Puni ciklus pratnje grafičkih, štampanih i plastičnih proizvoda: od izrade maketa i predštampane pripreme do kontrole tiraža i postpresne obrade. Uključuje saradnju sa izvođačima i proizvodnjom.",
+          "en": "A full cycle of support for graphic, print and plastic products: from layout design and prepress preparation to print run control and post-press processing. Includes coordination with contractors and production."
+        }
+      },
+      {
+        "type": "text",
+        "heading": {
+          "ru": "Моя роль",
+          "sr": "Moja uloga",
+          "en": "My role"
+        },
+        "text": {
+          "ru": "Разрабатывал макеты графической, печатной и пластиковой продукции в Adobe Illustrator, CorelDRAW и Adobe Photoshop.\nЗанимался постпечатной обработкой: подготовка и выпуск печатной продукции, работа с плоттерной резкой и оформлением готовой продукции.\nВзаимодействовал с подрядчиками и производством, отвечал за передачу готовых макетов в печать и контроль результата.",
+          "sr": "Izrađivao sam makete grafičkih, štampanih i plastičnih proizvoda u Adobe Illustrator-u, CorelDRAW-u i Adobe Photoshop-u.\nBavio sam se postpresnom obradom: priprema i izlazak štampanih proizvoda, rad sa plotterskim sečenjem i završna obrada gotovih proizvoda.\nSarađivao sam sa izvođačima i proizvodnjom, bio odgovoran za predaju gotovih maketa u štampu i kontrolu rezultata.",
+          "en": "I designed layouts for graphic, print and plastic products in Adobe Illustrator, CorelDRAW and Adobe Photoshop.\nI handled post-press processing: preparing and releasing printed products, working with plotter cutting and finishing the finished products.\nI worked with contractors and production, handled the handover of finished layouts to print and checked the results."
+        }
+      },
+      {
+        "type": "text",
+        "heading": {
+          "ru": "Инструменты",
+          "sr": "Alati",
+          "en": "Tools"
+        },
+        "text": {
+          "ru": "Adobe Illustrator, CorelDRAW, Adobe Photoshop, Mimaki Raster Link, оборудование для плоттерной резки",
+          "sr": "Adobe Illustrator, CorelDRAW, Adobe Photoshop, Mimaki Raster Link, oprema za plotterško sečenje",
+          "en": "Adobe Illustrator, CorelDRAW, Adobe Photoshop, Mimaki Raster Link, plotter cutting equipment"
+        }
+      }
+    ],
+    "featured": true,
+    "cardId": "",
+    "href": "",
+    "newTab": false,
+    "links": []
   }
 ];
 window.WORKS_SETTINGS = {"cardSize": "large"};
