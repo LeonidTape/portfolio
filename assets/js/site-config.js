@@ -1,3 +1,4 @@
+/* Настройки сайта: тексты, фото, порядок и видимость разделов, свои разделы. Файл ведёт админка «Страницы сайта» (папка admin/). */
 window.SITE_CONFIG = {
   "version": 1,
   "pages": {
@@ -218,7 +219,7 @@ window.SITE_CONFIG = {
   ],
   "links": {
     "telegram": {
-      "href": "https://t.me/stuckinMornveld",
+      "href": "https://t.me/sidametovich_Is",
       "text": ""
     },
     "vk": {
