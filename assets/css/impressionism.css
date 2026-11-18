@@ -1,0 +1,343 @@
+/* Импрессионистская абстракция: воздух, свет, мазки акварели.
+   Заменяет codex.css и светлую тему style.css. Разметка и классы сохранены. */
+
+:root {
+  --bg: #F7F2E8;            /* тёплая бумага */
+  --surface: rgba(255, 252, 245, 0.62);
+  --surface-2: rgba(240, 232, 216, 0.7);
+  --text: #2B2F4A;          /* графит с синевой */
+  --text-2: #5A5F7E;
+  --text-3: #8A8EA8;
+  --accent: #4A6FA5;        /* ультрамарин */
+  --accent-hover: #3A5A8A;
+  --rose: #D68CA0;
+  --ochre: #E2B260;
+  --sage: #96B8A0;
+  --lilac: #AA96C8;
+  --line: rgba(74, 111, 165, 0.18);
+  --line-soft: rgba(74, 111, 165, 0.08);
+
+  --font-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+
+  --r-md: 22px;
+  --r-lg: 28px;
+
+  --shadow-sm: 0 2px 10px rgba(74, 111, 165, 0.06);
+  --shadow-md: 0 14px 40px rgba(74, 111, 165, 0.10);
+  --shadow-lg: 0 24px 60px rgba(74, 111, 165, 0.16);
+
+  color-scheme: light;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+
+/* Зерно бумаги поверх всего */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.42  0 0 0 0 0.35  0 0 0 0.07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+::selection {
+  background: rgba(226, 178, 96, 0.35);
+}
+
+/* Фоновый холст акварели */
+.paint-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+header.top, main, footer.site-foot { position: relative; z-index: 3; }
+
+h1, h2, h3, .brand, .hero-title, .modal-content h2 {
+  font-family: var(--font-display);
+  color: var(--text);
+}
+h1 { font-weight: 500; letter-spacing: -0.01em; }
+h2 { font-weight: 500; letter-spacing: -0.005em; }
+h3 { font-weight: 500; font-size: 24px; }
+
+p { color: var(--text-2); }
+b { color: var(--text); }
+
+/* Шапка: матовая бумага без границы */
+.top {
+  background: rgba(247, 242, 232, 0.6);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  border-bottom: 1px solid transparent;
+}
+.top.scrolled {
+  border-bottom-color: var(--line-soft);
+  box-shadow: none;
+}
+.brand {
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.top nav a {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-style: italic;
+  color: var(--text-2);
+}
+.top nav a:hover,
+.top nav a[aria-current="page"] { color: var(--accent); }
+.top nav a[aria-current="page"]::after {
+  height: 1px;
+  background: var(--rose);
+  bottom: -6px;
+}
+
+.language-switch {
+  background: rgba(74, 111, 165, 0.08);
+}
+.lang-btn { color: var(--text-2); }
+.lang-btn.active {
+  background: rgba(255, 252, 245, 0.9);
+  color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Модалка выбора языка: туман и бумага */
+.language-modal {
+  background: rgba(247, 242, 232, 0.55);
+  backdrop-filter: blur(28px) saturate(130%);
+  -webkit-backdrop-filter: blur(28px) saturate(130%);
+}
+.modal-content {
+  background: rgba(255, 252, 245, 0.86);
+  border-radius: 32px;
+  box-shadow: var(--shadow-lg);
+}
+.modal-lang-btn {
+  background: rgba(74, 111, 165, 0.06);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text);
+  border-radius: 999px;
+}
+.modal-lang-btn:hover {
+  background: rgba(214, 140, 160, 0.16);
+}
+
+/* Hero: воздух, крупная курсивная линия света */
+.hero-codex {
+  min-height: 70vh;
+  padding-top: 140px;
+  padding-bottom: 64px;
+}
+.hero-kicker {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--rose);
+  margin: 0 0 18px;
+}
+.hero-title {
+  font-size: clamp(64px, 11vw, 150px);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 28px;
+  color: var(--text);
+}
+.hero-codex .lead {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 26px);
+  font-style: italic;
+  color: var(--text-2);
+  line-height: 1.5;
+  max-width: 620px;
+}
+
+section { padding: 72px 0; }
+section + section { border-top: none; }
+
+/* Фильтры: мазки-пилюли */
+.p-filter {
+  padding: 9px 20px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: rgba(255, 252, 245, 0.55);
+  color: var(--text-2);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-style: italic;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.5s ease, color 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease;
+}
+.p-filter:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+}
+.p-filter.is-active {
+  background: linear-gradient(120deg, rgba(74, 111, 165, 0.92), rgba(170, 150, 200, 0.9));
+  color: #FFFDF7;
+  border-color: transparent;
+}
+
+/* Карточки: бумага, растворённая в свете */
+.p-grid { gap: 32px; }
+.p-card {
+  background: rgba(255, 252, 245, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.8s cubic-bezier(0.22, 0.8, 0.3, 1), box-shadow 0.8s ease, background 0.8s ease;
+}
+.p-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  background: rgba(255, 252, 245, 0.85);
+}
+.p-card.is-special {
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(226, 178, 96, 0.35);
+}
+.p-card-media {
+  background: linear-gradient(135deg, rgba(150, 200, 220, 0.35), rgba(214, 140, 160, 0.3), rgba(226, 178, 96, 0.3));
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+}
+.p-card-media img {
+  filter: saturate(0.92) contrast(0.98);
+}
+.p-card:hover .p-card-media img { transform: scale(1.04); }
+.p-card-initial {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-style: italic;
+  color: rgba(43, 47, 74, 0.45);
+}
+.p-card-body { padding: 22px 24px 26px; }
+.p-card-year {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--rose);
+  font-size: 16px;
+}
+.p-card-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+}
+.p-card-text { color: var(--text-2); }
+.p-card-more {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+}
+.p-tag {
+  background: rgba(150, 184, 160, 0.18);
+  color: #4E6E58;
+  border: none;
+  border-radius: 999px;
+}
+
+/* Общие карточки и блоки (work/card/ai/university/video) */
+.card,
+.tile,
+.card-x,
+.card-gradient,
+.card-gh,
+.contact-card,
+.work-tile,
+.w-slide,
+.stats li {
+  background: rgba(255, 252, 245, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sm);
+  color: var(--text);
+}
+.card:hover,
+.tile:hover,
+.card-x:hover,
+.work-tile:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+.card h3, .tile h3, .card-x h3 { font-family: var(--font-display); }
+
+.btn {
+  background: linear-gradient(120deg, rgba(74, 111, 165, 0.95), rgba(170, 150, 200, 0.9));
+  color: #FFFDF7;
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-style: italic;
+  border: none;
+}
+.btn:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.chips li,
+.p-tag,
+.badge {
+  background: rgba(255, 252, 245, 0.7);
+  border: 1px solid rgba(74, 111, 165, 0.12);
+  color: var(--text-2);
+}
+
+a { color: var(--accent); }
+a:hover { color: var(--rose); }
+
+:focus-visible { outline-color: var(--rose); }
+
+/* Подвал */
+.site-foot {
+  border-top: none;
+  background: linear-gradient(to bottom, transparent, rgba(150, 184, 160, 0.14));
+}
+.site-foot a { color: var(--text-2); font-family: var(--font-display); font-style: italic; font-size: 17px; }
+.site-foot a:hover { color: var(--accent); }
+.sf-mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: rgba(74, 111, 165, 0.22);
+}
+
+@media (max-width: 600px) {
+  .hero-codex { min-height: 56vh; padding-top: 110px; }
+  .p-grid { gap: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p-card, .p-filter, .btn { transition: none; }
+  .p-card:hover { transform: none; }
+}

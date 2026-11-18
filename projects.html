@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title data-i18n="title_projects">Работы — Ismet Sidametovich</title>
+  <title data-i18n="title_projects">Проекты</title>
   <meta name="description" content="Портфолио работ UI/UX и веб-дизайнера" data-i18n-content="desc_projects">
   <meta name="theme-color" content="#FFFFFF">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/codex-theme.css" rel="stylesheet">
   <script>
 document.documentElement.classList.add('js');
 </script>
@@ -19,7 +20,7 @@ document.documentElement.classList.add('js');
   <link rel="apple-touch-icon" href="assets/uploads/site/1792814833057-apple-touch-icon.png" data-favicon-static>
 
 </head>
-<body>
+<body class="projects-page">
   <div class="language-modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-content">
       <h2 id="modal-title" data-i18n="modal_title">Выберите язык</h2>
@@ -34,11 +35,9 @@ document.documentElement.classList.add('js');
 
   <header class="top" data-section="global-header">
     <div class="top-inner">
-      <a class="brand" href="index.html">sidametovich</a>
+      <a class="brand" href="index.html">leonidtape</a>
       <nav>
-        <a href="index.html" data-i18n="nav_home">Главная</a>
-        <a href="projects.html" aria-current="page" data-i18n="nav_work">Работы</a>
-        <a href="textme.html" data-i18n="nav_contact">Контакты</a>
+        <a href="projects.html" aria-current="page" data-i18n="nav_work">Проекты</a>
       </nav>
       <div class="language-switch" role="group" data-i18n-label="lang_aria" aria-label="Выбор языка">
         <button class="lang-btn" data-lang="ru" aria-label="Русский" title="Русский" type="button">RU</button>
@@ -50,37 +49,23 @@ document.documentElement.classList.add('js');
 
   <main>
 
-    <section data-section="projects-s0" class="hero hero-bg">
-      <p class="role">sidametovich</p>
-      <h1 class="reveal" data-i18n="p_title">Сборка работ моей карьерной деятельности</h1>
-      <p class="lead reveal" data-i18n="p_lead">Подборка задач разного уровня сложности</p>
-    </section>
-
     <section data-section="projects-s1" class="projects-section">
-      <div class="p-filters p-filters-years" id="projects-years" role="group" aria-label="Фильтр по годам"></div>
-      <div class="p-filters" id="projects-filters" role="group" aria-label="Фильтр по тегам"></div>
+      <div class="projects-heading">
+        <p class="section-label" data-i18n="portfolio_label">Мои проекты</p>
+      </div>
       <div class="p-grid" id="projects-grid"></div>
-    </section>
-
-    <section data-section="projects-s2">
-      <ul class="stats stagger"><li><b>3</b> <span data-i18n="st1_n">года практики</span></li><li><b>7</b> <span data-i18n="st2_n">месяцев изучения</span></li><li><b>8</b> <span data-i18n="st3_n">лет в сфере</span></li><li><b>9</b> <span data-i18n="st4_n">месяцев опыта работы</span></li></ul>
     </section>
 
   </main>
 
   <footer class="site-foot" data-section="global-footer">
     <div class="sf-top">
-      <div class="fn">Ismet Sidametovich</div>
       <div class="fl">
-      <a href="https://t.me/rozhkov_leonid" data-link="telegram">Telegram</a>
-      <a href="https://vk.com/rozhkovleonid" data-link="vk">VK</a>
-      <a href="mailto:ismetsidametovich@gmail.com" data-link="email" data-i18n="f_email">Почта</a>
-      <a href="tel:+79817094436" data-link="phone" data-i18n="f_phone">Телефон</a>
       <a href="https://github.com/LeonidTape" data-link="github">GitHub</a>
       <a href="https://www.youtube.com/@leonidtrapper" data-link="youtube">YouTube</a>
     </div>
     </div>
-    <div class="sf-mark" aria-hidden="true">sidametovich</div>
+    <div class="sf-mark" aria-hidden="true">leonidtape</div>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -96,6 +81,7 @@ document.documentElement.classList.add('js');
   <script src="assets/js/emoji.js"></script>
   <script src="assets/js/special-cards.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/footer-mark.js"></script>
   <script src="assets/js/analytics.js"></script>
 </body>
 </html>

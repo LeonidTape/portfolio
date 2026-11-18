@@ -1,3 +1,4 @@
+/* Работы и карточки сайта. Файл ведёт админка (папка admin/) или его можно править вручную. */
 window.WORK_TAGS = {
   "backend": {
     "ru": "Backend",
@@ -76,7 +77,7 @@ window.WORKS = [
           "en": "About the project"
         },
         "text": {
-          "ru": "Discord Bot Controller — настольное приложение для Windows, которое запускает, останавливает и перезапускает Discord-бота и выводит его логи в одном окне. Пользователю не нужно открывать терминал и следить за процессом вручную. Есть режим автоматического перезапуска: приложение следит за файлами бота и поднимает его заново после изменений.\nИнтерфейс сделан в тёмной теме. Внизу расположены переключатель запуска, кнопка перезапуска и настройки авто-перезапуска. Вверху есть меню, где можно выбрать файл бота и открыть настройки. Вывод бота появляется в общей консоли.",
+          "ru": "Discord Bot Controller  настольное приложение для Windows, которое запускает, останавливает и перезапускает Discord-бота и выводит его логи в одном окне. Пользователю не нужно открывать терминал и следить за процессом вручную. Есть режим автоматического перезапуска: приложение следит за файлами бота и поднимает его заново после изменений.\nИнтерфейс сделан в тёмной теме. Внизу расположены переключатель запуска, кнопка перезапуска и настройки авто-перезапуска. Вверху есть меню, где можно выбрать файл бота и открыть настройки. Вывод бота появляется в общей консоли.",
           "sr": "Discord Bot Controller je desktop aplikacija za Windows koja pokreće, zaustavlja i ponovo pokreće Discord bota i prikazuje njegove logove u jednom prozoru. Korisniku ne treba terminal i ne mora ručno da prati proces. Postoji režim automatskog ponovnog pokretanja: aplikacija prati fajlove bota i podiže ga ponovo posle izmena.\nInterfejs je u tamnoj temi. Dole se nalaze prekidač za pokretanje, dugme za ponovno pokretanje i podešavanja automatskog restarta. Gore je meni za izbor fajla bota i otvaranje podešavanja. Ispis bota se pojavljuje u zajedničkoj konzoli.",
           "en": "Discord Bot Controller is a desktop app for Windows that starts, stops and restarts a Discord bot and shows its logs in one window. The user doesn't need to open a terminal or watch the process by hand. There is an auto-restart mode: the app watches the bot's files and brings it back up after changes.\nThe interface uses a dark theme. The bottom of the window holds the start switch, the restart button and the auto-restart settings. The top has a menu for choosing the bot file and opening settings. The bot's output appears in a shared console."
         }
@@ -125,7 +126,9 @@ window.WORKS = [
     "featured": false,
     "href": "",
     "newTab": false,
-    "links": []
+    "links": [],
+    "category": "programming",
+    "cardTagIds": []
   },
   {
     "id": "project-lt-project",
@@ -150,7 +153,7 @@ window.WORKS = [
         "type": "text",
         "heading": {},
         "text": {
-          "ru": "Проект в стиле видеоигры · UI-анимации, motion design, видео-продакшн, After Effects\nLT PROJECT — короткое видео в стилистике видеоигры. Оно создано для демонстрации анимации интерфейсов, музыкальной визуализации и интерактивных элементов. Основой стали элементы игровых интерфейсов: панель управления, индикаторы воспроизведения, игровые кнопки и всплывающие меню. Проект показывает мои навыки работы в After Effects, написания сценария и пост-продакшна.",
+          "ru": "Проект в стиле видеоигры · UI-анимации, motion design, видео-продакшн, After Effects\nLT PROJECT  короткое видео в стилистике видеоигры. Оно создано для демонстрации анимации интерфейсов, музыкальной визуализации и интерактивных элементов. Основой стали элементы игровых интерфейсов: панель управления, индикаторы воспроизведения, игровые кнопки и всплывающие меню. Проект показывает мои навыки работы в After Effects, написания сценария и пост-продакшна.",
           "sr": "Projekat u stilu video-igre · UI animacije, motion dizajn, video produkcija, After Effects\nLT PROJECT je kratak video u stilu video-igre. Napravljen je da pokaže animaciju interfejsa, muzičku vizuelizaciju i interaktivne elemente. Osnova su elementi igračkih interfejsa: kontrolna tabla, indikatori reprodukcije, igračka dugmad i iskačući meniji. Projekat pokazuje moje veštine rada u After Effects-u, pisanja scenarija i post-produkcije.",
           "en": "Video-game style project · UI animation, motion design, video production, After Effects\nLT PROJECT is a short video in the style of a video game. It was made to show interface animation, music visualization and interactive elements. The base is game interface elements: a control panel, playback indicators, game buttons and pop-up menus. The project shows my skills in After Effects, scriptwriting and post-production."
         }
@@ -217,7 +220,9 @@ window.WORKS = [
     "featured": false,
     "href": "",
     "newTab": false,
-    "links": []
+    "links": [],
+    "category": "graphics",
+    "cardTagIds": []
   },
   {
     "id": "project-pokaduedem",
@@ -287,7 +292,9 @@ window.WORKS = [
     "featured": false,
     "href": "",
     "newTab": false,
-    "links": []
+    "links": [],
+    "category": "programming",
+    "cardTagIds": []
   },
   {
     "id": "project-pulse-pistons",
@@ -314,7 +321,7 @@ window.WORKS = [
         "type": "text",
         "heading": {},
         "text": {
-          "ru": "UI/UX дизайн, веб-разработка, интеграция ИИ, motion design · Readymag · дипломный проект\nPulse&Pistons — концепт сетевого журнала о спортивных автомобилях. Задача проекта — передать динамику автоиндустрии через визуальный язык, в котором скорость и мощность выражены композицией, типографикой и контрастной палитрой. Журнал должен быть удобным: с понятной навигацией, информационной архитектурой и крупными визуальными блоками, которые ведут читателя от материала к материалу. Отдельная часть проекта — модуль искусственного интеллекта, который генерирует контент и повышает интерактивность журнала.",
+          "ru": "UI/UX дизайн, веб-разработка, интеграция ИИ, motion design · Readymag · дипломный проект\nPulse&Pistons  концепт сетевого журнала о спортивных автомобилях. Задача проекта  передать динамику автоиндустрии через визуальный язык, в котором скорость и мощность выражены композицией, типографикой и контрастной палитрой. Журнал должен быть удобным: с понятной навигацией, информационной архитектурой и крупными визуальными блоками, которые ведут читателя от материала к материалу. Отдельная часть проекта  модуль искусственного интеллекта, который генерирует контент и повышает интерактивность журнала.",
           "sr": "UI/UX dizajn, veb razvoj, integracija AI-ja, motion dizajn · Readymag · diplomski projekat\nPulse&Pistons je koncept onlajn magazina o sportskim automobilima. Zadatak projekta je da prenese dinamiku automobilske industrije kroz vizuelni jezik u kojem su brzina i snaga izraženi kompozicijom, tipografijom i kontrastnom paletom. Magazin treba da bude praktičan: sa jasnom navigacijom, informacionom arhitekturom i velikim vizuelnim blokovima koji čitaoca vode od jednog materijala do sledećeg. Poseban deo projekta je AI modul koji generiše sadržaj i čini magazin interaktivnijim.",
           "en": "UI/UX design, web development, AI integration, motion design · Readymag · diploma project\nPulse&Pistons is a concept online magazine about sports cars. The goal of the project is to convey the dynamics of the auto industry through a visual language in which speed and power are expressed through composition, typography and a contrasting palette. The magazine has to be convenient: with clear navigation, an information architecture and large visual blocks that lead the reader from one piece of material to the next. A separate part of the project is an AI module that generates content and makes the magazine more interactive."
         }
@@ -402,7 +409,9 @@ window.WORKS = [
     "cardId": "",
     "href": "",
     "newTab": false,
-    "links": []
+    "links": [],
+    "category": "graphics",
+    "cardTagIds": []
   },
   {
     "id": "project-revolution",
@@ -439,7 +448,7 @@ window.WORKS = [
           "en": "About the project"
         },
         "text": {
-          "ru": "Revolution — набор консольных утилит для Discord, который превращает обычный пользовательский аккаунт в аккаунт с возможностями бота. Аккаунт принимает команды, модерирует сервер, показывает чаты и пишет в каналы прямо из консоли. Всё работает локально, интерфейс консольный, с цветным ANSI-выводом и русскоязычными сообщениями.\nГлавная идея в том, что Discord ограничивает юзерботов: автоматизация на обычных аккаунтах не предусмотрена. Revolution обходит это ограничение. Он подключается к клиентской библиотеке по токену пользовательского аккаунта, а не бота, и обычный профиль получает функциональность бота. Такой подход (селфбот) нарушает правила платформы, поэтому я считаю проект техническим экспериментом, а не продуктом. Он помог мне разобраться, как Discord устроен изнутри: авторизация, токены, события, система прав.",
+          "ru": "Revolution  набор консольных утилит для Discord, который превращает обычный пользовательский аккаунт в аккаунт с возможностями бота. Аккаунт принимает команды, модерирует сервер, показывает чаты и пишет в каналы прямо из консоли. Всё работает локально, интерфейс консольный, с цветным ANSI-выводом и русскоязычными сообщениями.\nГлавная идея в том, что Discord ограничивает юзерботов: автоматизация на обычных аккаунтах не предусмотрена. Revolution обходит это ограничение. Он подключается к клиентской библиотеке по токену пользовательского аккаунта, а не бота, и обычный профиль получает функциональность бота. Такой подход (селфбот) нарушает правила платформы, поэтому я считаю проект техническим экспериментом, а не продуктом. Он помог мне разобраться, как Discord устроен изнутри: авторизация, токены, события, система прав.",
           "sr": "Glavna ideja je u tome da Discord ograničava korisničke botove: automatizacija na običnim nalozima nije predviđena. Revolution zaobilazi to ograničenje. Povezuje se na klijentsku biblioteku preko tokena korisničkog naloga, a ne bot naloga, pa običan profil dobija funkcionalnost bota. Takav pristup (selfbot) krši pravila platforme, pa projekat smatram tehničkim eksperimentom, a ne proizvodom. Pomogao mi je da shvatim kako Discord radi iznutra: autorizacija, tokeni, događaji, sistem dozvola.",
           "en": "The main idea is that Discord restricts user bots: automation on regular accounts is not provided for. Revolution gets around this restriction. It connects to the client library with a user account token rather than a bot token, so an ordinary profile gets bot functionality. This approach (a selfbot) violates the platform's rules, so I consider the project a technical experiment rather than a product. It helped me understand how Discord works inside: authorization, tokens, events, the permission system."
         }
@@ -514,7 +523,9 @@ window.WORKS = [
     "featured": false,
     "href": "",
     "newTab": false,
-    "links": []
+    "links": [],
+    "category": "programming",
+    "cardTagIds": []
   },
   {
     "id": "project-webregistry",
@@ -605,7 +616,9 @@ window.WORKS = [
     "cardId": "",
     "href": "",
     "newTab": false,
-    "links": []
+    "links": [],
+    "category": "programming",
+    "cardTagIds": []
   },
   {
     "id": "project-video-editing",
@@ -679,7 +692,9 @@ window.WORKS = [
     "featured": false,
     "href": "",
     "newTab": false,
-    "links": []
+    "links": [],
+    "category": "graphics",
+    "cardTagIds": []
   },
   {
     "id": "project-ai",
@@ -704,7 +719,7 @@ window.WORKS = [
         "type": "text",
         "heading": {},
         "text": {
-          "ru": "Генерация изображений · ComfyUI · локальный запуск моделей · промт-инжиниринг\nРаздел посвящён практической работе с нейросетями: генерации изображений, запуску моделей на собственном оборудовании и встраиванию ИИ в дизайн-проекты. Главная задача — не просто пользоваться готовыми сервисами, а настроить рабочий процесс так, чтобы результат был стабильным и предсказуемым.",
+          "ru": "Генерация изображений · ComfyUI · локальный запуск моделей · промт-инжиниринг\nРаздел посвящён практической работе с нейросетями: генерации изображений, запуску моделей на собственном оборудовании и встраиванию ИИ в дизайн-проекты. Главная задача  не просто пользоваться готовыми сервисами, а настроить рабочий процесс так, чтобы результат был стабильным и предсказуемым.",
           "sr": "Generisanje slika · ComfyUI · lokalno pokretanje modela · prompt inženjering\nDeo o praktičnom radu sa neuronskim mrežama: generisanje slika, pokretanje modela na sopstvenom hardveru i ugrađivanje AI-ja u dizajn projekte. Glavni cilj nije samo korišćenje gotovih servisa, nego podešavanje radnog procesa tako da rezultat bude stabilan i predvidiv.",
           "en": "Image generation · ComfyUI · local model deployment · prompt engineering\nA section about practical work with neural networks: image generation, running models on my own hardware and building AI into design projects. The main goal is not just to use ready-made services, but to set up a workflow where the result is stable and predictable."
         }
@@ -757,7 +772,9 @@ window.WORKS = [
     "featured": false,
     "href": "",
     "newTab": false,
-    "links": []
+    "links": [],
+    "category": "graphics",
+    "cardTagIds": []
   },
   {
     "id": "project-university-department",
@@ -863,7 +880,9 @@ window.WORKS = [
     "featured": false,
     "href": "",
     "newTab": false,
-    "links": []
+    "links": [],
+    "category": "graphics",
+    "cardTagIds": []
   },
   {
     "id": "project-razlom",
@@ -887,7 +906,7 @@ window.WORKS = [
         "type": "text",
         "heading": {},
         "text": {
-          "ru": "Немой сериал · атмосферная драма · незавершённый проект\nСериал без слов о герое, который осознаёт свой поступок и пытается выбраться из собственного внутреннего мира. Этот мир олицетворяет одиночество и душевную тяжесть. Герой ищет близкого человека, но не дожидается его и решает уйти. Позже он понимает, что ошибся: в дверь стучит тот, кто повесил картину у его кровати и принёс новое стекло, чтобы уберечь героя от беды.\nЗамысел опирается на атмосферу, похожую на Backrooms: пустые, бесконечные пространства, в которых сюжет рассказывается через пространство и ощущение, а не диалоги. Главный вопрос проекта — как альтернативный мир после смерти будет восприниматься самим героем.",
+          "ru": "Немой сериал · атмосферная драма · незавершённый проект\nСериал без слов о герое, который осознаёт свой поступок и пытается выбраться из собственного внутреннего мира. Этот мир олицетворяет одиночество и душевную тяжесть. Герой ищет близкого человека, но не дожидается его и решает уйти. Позже он понимает, что ошибся: в дверь стучит тот, кто повесил картину у его кровати и принёс новое стекло, чтобы уберечь героя от беды.\nЗамысел опирается на атмосферу, похожую на Backrooms: пустые, бесконечные пространства, в которых сюжет рассказывается через пространство и ощущение, а не диалоги. Главный вопрос проекта  как альтернативный мир после смерти будет восприниматься самим героем.",
           "sr": "Nemi serijal · atmosferska drama · nedovršen projekat\nSerija bez reči o junaku koji shvata šta je uradio i pokušava da izađe iz sopstvenog unutrašnjeg sveta. Taj svet predstavlja usamljenost i emotivnu težinu. Junak traži bliske ljude, ali ne čeka ih i odlučuje da ode. Kasnije shvata da je pogrešio: na vrata kuca neko ko je okačio sliku iznad njegovog kreveta i doneo novo staklo da ga zaštiti od nevolje.\nZamisao se oslanja na atmosferu sličnu Backrooms-u: prazne, beskrajne prostore u kojima se priča ispričava kroz prostor i osećaj, a ne kroz dijaloge. Glavno pitanje projekta je kako će alternativni svet posle smrti doživeti sam junak.",
           "en": "Silent series · atmospheric drama · unfinished project\nA series without words about a hero who realizes what he has done and tries to escape his own inner world. That world stands for loneliness and emotional heaviness. The hero looks for a close person but does not wait for them and decides to leave. Later he realizes he was wrong: someone is knocking at the door, the person who hung the picture above his bed and brought a new pane of glass to protect him from harm.\nThe concept draws on an atmosphere similar to the Backrooms: empty, endless spaces where the story is told through space and feeling rather than dialogue. The central question of the project is how the alternative world after death will be perceived by the hero himself."
         }
@@ -928,7 +947,9 @@ window.WORKS = [
     "featured": false,
     "href": "",
     "newTab": false,
-    "links": []
+    "links": [],
+    "category": "graphics",
+    "cardTagIds": []
   },
   {
     "id": "project-nta",
@@ -1021,10 +1042,67 @@ window.WORKS = [
     "cardId": "",
     "featured": false,
     "href": "",
-    "newTab": false
+    "newTab": false,
+    "category": "graphics",
+    "cardTagIds": []
+  },
+  {
+    "id": "work-mwlf1sc2",
+    "year": "2026",
+    "title": {
+      "ru": "Dissar"
+    },
+    "summary": {
+      "ru": "Быстрый анализатор программ на наличие вредоносного кода"
+    },
+    "cover": "assets/uploads/works/work-mwlf1sc2/1794963754496-photo.webp",
+    "blocks": [
+      {
+        "type": "text",
+        "heading": {
+          "ru": ""
+        },
+        "text": {
+          "ru": "Dissar проверяет исполняемые файлы Windows, прежде чем их запускать. Программа читает файл как данные, ничего из него не выполняя, и выносит вердикт: зелёный, жёлтый или красный. Вердикт опирается на подпись, импорты, строки, адреса в файле и цепочки действий, которые из них складываются.\n\nDissar написан на C++17 для Win32 и собирается через CMake и MSVC."
+        }
+      },
+      {
+        "type": "carousel",
+        "items": [
+          {
+            "src": "assets/uploads/works/work-mwlf1sc2/1794964084820-1.png",
+            "caption": {}
+          },
+          {
+            "src": "assets/uploads/works/work-mwlf1sc2/1794964084862-2.png",
+            "caption": {}
+          },
+          {
+            "src": "assets/uploads/works/work-mwlf1sc2/1794964084880-3.png",
+            "caption": {}
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "heading": {
+          "ru": "Что Dissar проверяет:"
+        },
+        "text": {
+          "ru": "SHA-256 файла и подпись через WinVerifyTrust, включая имя издателя из сертификата. Статус «валидна» означает корректность подписи, но не совпадение с ожидаемым издателем. Это проверяет пользователь.\nИмпорты и цепочки действий: внедрение в процесс, скачивание с запуском, закрепление в системе, перехват ввода с отправкой данных, шифрование с текстом выкупа, удаление теней и бэкапов.\nСтроки в ASCII и UTF-16LE, включая литералы .NET-сборок.\nURL, домены и IP-адреса из строк. Адреса сверяются с базой доверенных источников, поэтому YouTube, GitHub и CDN не считаются подозрительными.\nСтруктурные признаки упаковщиков: RWX-секции, высокая энтропия, нетипичная точка входа. Для неподписанного файла они дают не больше 5 баллов. Для подписанного только показываются.\nСобственный файл Dissar: программа узнаёт себя по пути и SHA-256 и не оценивает собственные сигнатуры.\nРежим разбора кода (переключатель Disassemble) делает статический проход по машинному коду x86 и x64. Программа обходит код рекурсивно от точки входа, экспортов, TLS-callback и записей исключений. Результаты выводятся на вкладках «Код» и «Листинг», у каждой находки есть адрес и инструкция-основание. Файл при этом не загружается как модуль и не запускается.\n\nКнопка с иконкой робота копирует в буфер обмена готовый запрос для нейросети с данными отчёта: хешем, подписью, баллами, признаками, адресами и находками разбора. Листинг туда не попадает, вместо него передаются до 100 находок.\n\nЗагрузка файлов по ссылке тоже безопасна. Dissar принимает только HTTPS, не переходит по редиректам, ограничивает размер 64 МиБ и никогда не открывает и не запускает скачанный файл.\n\nПодробнее на странице Github https://github.com/LeonidTape/dissar"
+        }
+      }
+    ],
+    "cardId": "",
+    "featured": true,
+    "category": "programming",
+    "href": "",
+    "newTab": false,
+    "links": [],
+    "cardTagIds": []
   }
 ];
-window.WORKS_SETTINGS = {"cardSize": "large"};
+window.WORKS_SETTINGS = {"cardSize": "large", "tagLibrary": []};
 window.CARDS = [
   {
     "directLink": {
@@ -1056,7 +1134,7 @@ window.CARDS = [
       "sr": "Backend razvoj",
       "en": "Backend Development"
     },
-    "years": "2022 — 2025",
+    "years": "2022  2025",
     "summary": {
       "ru": "Создаю утилиты и небольшие программы.",
       "sr": "Pravim alate i manje programe.",
@@ -1148,7 +1226,7 @@ window.CARDS = [
       "sr": "Video montaža",
       "en": "Video editing"
     },
-    "years": "2017 — 2025",
+    "years": "2017  2025",
     "summary": {
       "ru": "Создавал готовые ролики: от черновой последовательности до финального рендера.",
       "sr": "Pravio sam gotove videe: od grube montaže do finalnog renderovanja.",
@@ -1194,7 +1272,7 @@ window.CARDS = [
       "sr": "Rad na katedri",
       "en": "University department work"
     },
-    "years": "2022 — 2024",
+    "years": "2022  2024",
     "summary": {
       "ru": "Разрабатывал графические материалы для факультета.",
       "sr": "Radio sam grafičke materijale za fakultet.",

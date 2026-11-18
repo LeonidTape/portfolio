@@ -140,12 +140,15 @@
     return x ? pick(x, lang) : t;
   }
 
-  function tagsHtml(work, lang) {
-    var tags = Array.isArray(work.tags) ? work.tags : [];
-    if (!tags.length) return '';
-    return '<div class="p-tags w-tags">' + tags.map(function (t) {
-      return '<span class="p-tag">' + esc(tagLabel(t, lang)) + '</span>';
-    }).join('') + '</div>';
+  function tagsHtml(work) {
+    var lib = (window.WORKS_SETTINGS && window.WORKS_SETTINGS.tagLibrary) || [];
+    var chips = (work.cardTagIds || []).map(function (id) {
+      for (var i = 0; i < lib.length; i++) if (lib[i].id === id) return lib[i];
+      return null;
+    }).filter(Boolean).map(function (x) {
+      return '<span class="p-tag p-tag-custom" style="background:' + esc(x.bg) + ';color:' + esc(x.color) + '">' + esc(x.text) + '</span>';
+    }).join('');
+    return chips ? '<div class="p-tags w-tags">' + chips + '</div>' : '';
   }
 
   function renderPage(work, o) {
@@ -193,13 +196,13 @@
 
     if (!work) {
       el.innerHTML = '<div class="hero"><h1>' + esc(tr('work_not_found', lang)) + '</h1></div>';
-      document.title = tr('work_not_found', lang) + ' — Ismet Sidametovich';
+      document.title = tr('work_not_found', lang) + '  ';
       return;
     }
 
     galleryCounter = 0;
     el.innerHTML = renderPage(work, { lang: lang });
-    document.title = pick(work.title, lang) + ' — Ismet Sidametovich';
+    document.title = pick(work.title, lang) + '  ';
     initLightbox();
   }
 
@@ -446,7 +449,7 @@
     var card = id ? cardById(id) : null;
     if (!card) {
       el.innerHTML = '<div class="hero"><h1>' + esc(tr('work_not_found', lang)) + '</h1></div>';
-      document.title = tr('work_not_found', lang) + ' — Ismet Sidametovich';
+      document.title = tr('work_not_found', lang) + '  ';
       return;
     }
     var title = pick(card.title, lang);
@@ -459,7 +462,7 @@
       (works.length
         ? '<div class="work-grid">' + works.map(function (w) { return workTile(w, lang, ''); }).join('') + '</div>'
         : '<p class="card-x-empty center">' + esc(tr('card_empty', lang)) + '</p>');
-    document.title = title + ' — Ismet Sidametovich';
+    document.title = title + '  ';
   }
 
   function renderCardsBlock(lang, base) {

@@ -1,165 +1,110 @@
 (function () {
   var grid = document.getElementById('projects-grid');
-  var yearBar = document.getElementById('projects-years');
-  var bar = document.getElementById('projects-filters');
-  if (!grid || !bar || !yearBar) return;
+  if (!grid) return;
 
   var LANGS = ['ru', 'sr', 'en'];
   var UI = {
-    all: { ru: 'Все', sr: 'Sve', en: 'All' },
-    allYears: { ru: 'Все годы', sr: 'Sve godine', en: 'All years' },
     more: { ru: 'Подробнее', sr: 'Saznajte više', en: 'Learn more' },
-    empty: { ru: 'Нет проектов с выбранными фильтрами', sr: 'Nema projekata za izabrane filtere', en: 'No projects match the selected filters' },
-    reset: { ru: 'Сбросить фильтры', sr: 'Poništi filtere', en: 'Clear filters' }
+    empty: { ru: 'Проекты появятся здесь', sr: 'Projekti će se pojaviti ovde', en: 'Projects will appear here' }
   };
-  var selectedTags = {};
-  var selectedYear = '';
 
   function lang() {
-    var l = document.documentElement.lang;
-    return LANGS.indexOf(l) !== -1 ? l : 'ru';
+    var current = document.documentElement.lang;
+    return LANGS.indexOf(current) !== -1 ? current : 'ru';
   }
-  function pick(field, l) {
+
+  function pick(field, currentLang) {
     if (!field) return '';
-    return field[l] || field.ru || field.sr || field.en || '';
+    return field[currentLang] || field.ru || field.sr || field.en || '';
   }
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+
+  function esc(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, function (char) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char];
     });
   }
-  function ui(key, l) { return UI[key][l] || UI[key].ru; }
-  function tagLabel(t, l) {
-    var x = (window.WORK_TAGS || {})[t];
-    return x ? pick(x, l) : t;
-  }
-  function works() {
-    return Array.isArray(window.WORKS) ? window.WORKS : [];
+
+  function label(key, currentLang) {
+    return UI[key][currentLang] || UI[key].ru;
   }
 
-  function yearOf(w) {
-    var m = String(w.year || '').match(/\d{4}/);
-    return m ? m[0] : '';
-  }
-  function usedTags() {
-    var order = Object.keys(window.WORK_TAGS || {});
-    var used = {};
-    works().forEach(function (w) { (w.tags || []).forEach(function (t) { used[t] = true; }); });
-    return order.filter(function (t) { return used[t]; });
-  }
-  function usedYears() {
-    var seen = {};
-    works().forEach(function (w) { var y = yearOf(w); if (y) seen[y] = true; });
-    return Object.keys(seen).sort().reverse();
-  }
-  function tagsActive() { return Object.keys(selectedTags).length > 0; }
-
-  function matches(w) {
-    if (selectedYear && yearOf(w) !== selectedYear) return false;
-    if (!tagsActive()) return true;
-    return (w.tags || []).some(function (t) { return selectedTags[t]; });
+  function tagLabel(tag, currentLang) {
+    var translated = (window.WORK_TAGS || {})[tag];
+    return translated ? pick(translated, currentLang) : tag;
   }
 
-  function ordered(list) {
-    var top = list.filter(function (w) { return w.featured; });
-    var rest = list.filter(function (w) { return !w.featured; });
-    return top.concat(rest);
+  function libTags(work) {
+    var lib = (window.WORKS_SETTINGS && window.WORKS_SETTINGS.tagLibrary) || [];
+    return (work.cardTagIds || []).map(function (id) {
+      for (var i = 0; i < lib.length; i++) if (lib[i].id === id) return lib[i];
+      return null;
+    }).filter(Boolean);
   }
 
-  function renderYears(l) {
-    var years = usedYears();
-    if (!years.length) { yearBar.innerHTML = ''; yearBar.style.display = 'none'; return; }
-    yearBar.style.display = '';
-    yearBar.innerHTML = '<button type="button" class="p-filter' + (selectedYear ? '' : ' is-active') +
-      '" data-year="" aria-pressed="' + (selectedYear ? 'false' : 'true') + '">' + esc(ui('allYears', l)) + '</button>' +
-      years.map(function (y) {
-        var on = selectedYear === y;
-        return '<button type="button" class="p-filter' + (on ? ' is-active' : '') + '" data-year="' + esc(y) +
-          '" aria-pressed="' + on + '">' + esc(y) + '</button>';
-      }).join('');
-  }
-
-  function renderTags(l) {
-    var html = '<button type="button" class="p-filter' + (tagsActive() ? '' : ' is-active') +
-      '" data-tag="" aria-pressed="' + (tagsActive() ? 'false' : 'true') + '">' + esc(ui('all', l)) + '</button>';
-    html += usedTags().map(function (t) {
-      var on = !!selectedTags[t];
-      return '<button type="button" class="p-filter' + (on ? ' is-active' : '') + '" data-tag="' + esc(t) +
-        '" aria-pressed="' + on + '">' + esc(tagLabel(t, l)) + '</button>';
+  function customTagsHtml(work) {
+    var chips = libTags(work).map(function (t) {
+      return '<span class="p-tag p-tag-custom" style="background:' + esc(t.bg) + ';color:' + esc(t.color) + '">' + esc(t.text) + '</span>';
     }).join('');
-    bar.innerHTML = html;
+    return chips ? '<div class="p-tags p-card-tags">' + chips + '</div>' : '';
   }
 
-  function cardHtml(w, l) {
-    var title = pick(w.title, l);
-    var summary = pick(w.summary, l);
-    var media = w.cover
-      ? '<img src="' + esc(w.cover) + '" alt="' + esc(title) + '" loading="lazy">'
+  function orderedWorks() {
+    var works = Array.isArray(window.WORKS) ? window.WORKS.slice() : [];
+    return works.sort(function (a, b) {
+      return Number(Boolean(b.featured)) - Number(Boolean(a.featured));
+    });
+  }
+
+  function cardHtml(work, currentLang) {
+    var title = pick(work.title, currentLang);
+    var summary = pick(work.summary, currentLang);
+    var media = work.cover
+      ? '<img src="' + esc(work.cover) + '" alt="' + esc(title) + '" loading="lazy">'
       : '<span class="p-card-initial" aria-hidden="true">' + esc(title.charAt(0)) + '</span>';
-    var tags = (w.tags || []).map(function (t) {
-      return '<span class="p-tag">' + esc(tagLabel(t, l)) + '</span>';
-    }).join('');
-    var card = '<a class="p-card" href="work.html?id=' + encodeURIComponent(w.id) + '">' +
-      '<div class="p-card-media' + (w.cover ? '' : ' is-empty') + '">' + media + '</div>' +
-      '<div class="p-card-body">' +
-        (w.year ? '<p class="p-card-year">' + esc(w.year) + '</p>' : '') +
-        '<h3 class="p-card-title">' + esc(title) + '</h3>' +
-        (summary ? '<p class="p-card-text">' + esc(summary) + '</p>' : '') +
-        (tags ? '<div class="p-tags">' + tags + '</div>' : '') +
-        '<span class="p-card-more">' + esc(ui('more', l)) + ' →</span>' +
-      '</div></a>';
-    return '<div class="p-item">' + (w.featured ? card.replace('class="p-card"', 'class="p-card is-special"') : card) + '</div>';
+    var tags = customTagsHtml(work);
+
+    return '<div class="p-item">' +
+      '<a class="p-card" href="work.html?id=' + encodeURIComponent(work.id) + '">' +
+        '<div class="p-card-head">' +
+          '<div class="p-card-media' + (work.cover ? '' : ' is-empty') + '">' + media + '</div>' +
+          '<div class="p-card-titles">' +
+            '<h3 class="p-card-title">' + esc(title) + '</h3>' +
+            (work.year ? '<p class="p-card-year">' + esc(work.year) + '</p>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div class="p-card-body">' +
+          tags +
+          (summary ? '<p class="p-card-text">' + esc(summary) + '</p>' : '') +
+          '<span class="p-card-more">' + esc(label('more', currentLang)) + ' <span aria-hidden="true">↗</span></span>' +
+        '</div>' +
+      '</a>' +
+    '</div>';
   }
 
-  function renderGrid(l) {
-    var list = ordered(works().filter(matches));
-    if (!list.length) {
-      grid.innerHTML = '<div class="p-empty"><p>' + esc(ui('empty', l)) + '</p>' +
-        '<button type="button" class="p-filter is-active" data-reset="1">' + esc(ui('reset', l)) + '</button></div>';
+  var CATS = [
+    { id: 'programming', ru: 'Программирование', sr: 'Programiranje', en: 'Programming' },
+    { id: 'graphics', ru: 'Графика и видео', sr: 'Grafika i video', en: 'Graphics & video' }
+  ];
+
+  function render() {
+    var currentLang = lang();
+    var works = orderedWorks();
+    if (!works.length) {
+      grid.innerHTML = '<p class="p-empty">' + esc(label('empty', currentLang)) + '</p>';
       return;
     }
-    grid.innerHTML = list.map(function (w) { return cardHtml(w, l); }).join('');
+    var html = '';
+    CATS.forEach(function (cat) {
+      var list = works.filter(function (w) { return w.category === cat.id; });
+      if (!list.length) return;
+      html += '<h3 class="p-cat-title">' + esc(cat[currentLang] || cat.ru) + '</h3>' +
+        list.map(function (w) { return cardHtml(w, currentLang); }).join('');
+    });
+    var rest = works.filter(function (w) { return !w.category; });
+    html += rest.map(function (w) { return cardHtml(w, currentLang); }).join('');
+    grid.innerHTML = html;
   }
 
-  function refresh() {
-    var l = lang();
-    renderYears(l);
-    renderTags(l);
-    renderGrid(l);
-  }
-
-  function resetAll() {
-    selectedTags = {};
-    selectedYear = '';
-    refresh();
-  }
-
-  yearBar.addEventListener('click', function (e) {
-    var b = e.target.closest('.p-filter');
-    if (!b) return;
-    var y = b.getAttribute('data-year');
-    selectedYear = (y && y !== selectedYear) ? y : '';
-    refresh();
-  });
-
-  bar.addEventListener('click', function (e) {
-    var b = e.target.closest('.p-filter');
-    if (!b) return;
-    var tag = b.getAttribute('data-tag');
-    if (!tag) {
-      selectedTags = {};
-    } else if (selectedTags[tag]) {
-      delete selectedTags[tag];
-    } else {
-      selectedTags[tag] = true;
-    }
-    refresh();
-  });
-
-  grid.addEventListener('click', function (e) {
-    if (e.target.closest('[data-reset]')) resetAll();
-  });
-
-  document.addEventListener('languagechange', refresh);
-  refresh();
+  document.addEventListener('languagechange', render);
+  render();
 })();
