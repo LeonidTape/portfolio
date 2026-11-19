@@ -120,6 +120,15 @@ window.WORKS = [
           "sr": "Glavni fajl main.py je dugačak: sva logika interfejsa je u jednoj funkciji main(). Trebalo bi je podeliti u klase, po jedna za svaki ekran.\nModuli se uvoze preko try/except ImportError sa None, a onda se svuda proverava hasattr. Tako se kriju greške koje bi bilo bolje odmah prikazati.\nKod za dobijanje foldera sa podacima ponavlja se na više mesta. Mogao bi da ide u jedan zajednički modul.\nrequirements.txt sadrži alate za build i nepotrebne zavisnosti, npr. Flask, Bottle, Werkzeug i gevent. Čini se da su ostali od drugih eksperimenata. Fajl je sačuvan u UTF-16, što može da smeta pri pip install -r.\nFunkcije stop i restart rade sa PID-om iz fajla. Ako bot sam padne, fajl ostaje i upravljanje može da se pomeša.",
           "en": "main.py is long: all of the interface logic lives in one main() function. It should be split into classes, one per screen.\nModules are imported with try/except ImportError falling back to None, and then checked with hasattr everywhere. This hides errors that should be shown right away.\nThe code that gets the data folder is repeated in many places. It could go into one shared module.\nrequirements.txt contains build tools and unnecessary dependencies, such as Flask, Bottle, Werkzeug and gevent. They seem to be left over from other experiments. The file is saved in UTF-16, which can get in the way of pip install -r.\nThe stop and restart functions rely on the PID in the file. If the bot crashes on its own, the file stays behind and control can get out of sync."
         }
+      },
+      {
+        "type": "button",
+        "href": "https://github.com/LeonidTape/discord-bot-controller",
+        "label": {
+          "ru": "Проект на GitHub",
+          "sr": "",
+          "en": ""
+        }
       }
     ],
     "cardId": "",
@@ -285,6 +294,15 @@ window.WORKS = [
           "ru": "Спроектировал и разработал игру в рамках более масштабной концепции интерактивного автомобильного издания. Объединил игровые механики, элементы интерфейса и веб-технологии в работающий игровой прототип.\nИнструменты: HTML, CSS, JavaScript, ChatGPT, GitHub Copilot",
           "sr": "Dizajnirao sam i razvio igru u okviru šireg koncepta interaktivnog automobilskog izdanja. Spojio sam igračke mehanike, elemente interfejsa i veb tehnologije u radni igrački prototip.\nAlati: HTML, CSS, JavaScript, ChatGPT, GitHub Copilot",
           "en": "I designed and developed the game as part of a larger concept of an interactive car publication. I combined the game mechanics, interface elements and web technologies into a working game prototype.\nTools: HTML, CSS, JavaScript, ChatGPT, GitHub Copilot"
+        }
+      },
+      {
+        "type": "button",
+        "href": "https://github.com/LeonidTape/pokaduedem",
+        "label": {
+          "ru": "Проект на GitHub",
+          "sr": "",
+          "en": ""
         }
       }
     ],
@@ -517,6 +535,15 @@ window.WORKS = [
           "sr": "Napisao bih pravog bota na aktuelnoj verziji discord.js sa slash komandama i zvaničnim tokenom bot naloga. Dozvole bi se proveravale preko modela uloga, a konfiguracija i tajne bi bile u .env fajlu. Kod bi bio podeljen na zajedničke pomoćne funkcije bez dupliranja i pokriven testovima.",
           "en": "I would write a proper bot on a current version of discord.js with slash commands and an official bot token. Permissions would be checked with a role model, and the config and secrets would live in a .env file. The code would be split into shared utilities without duplication and covered with tests."
         }
+      },
+      {
+        "type": "button",
+        "href": "https://discord.gg/33egyhRRq3",
+        "label": {
+          "ru": "Скачать в Discord",
+          "sr": "",
+          "en": ""
+        }
       }
     ],
     "cardId": "",
@@ -609,6 +636,15 @@ window.WORKS = [
           "ru": "Проект разработан мной лично. Я писал и backend, и frontend, проектировал схему базы, систему ролей и производственные статусы, а также импорт и экспорт Excel. Интерфейс сделан без фреймворков, а разметка и стили подогнаны под работу за рабочим столом.",
           "sr": "Projekat sam razvio lično. Pisao sam i backend i frontend, projektovao šemu baze, sistem uloga i proizvodne statuse, kao i uvoz i izvoz Excel-a. Interfejs je napravljen bez framework-a, a raspored i stilovi prilagođeni su radu na radnoj stanici.",
           "en": "I developed the project myself. I wrote both the backend and the frontend, designed the database schema, the role system and the production statuses, as well as the Excel import and export. The interface is built without frameworks, and the layout and styles are tuned for desktop work."
+        }
+      },
+      {
+        "type": "button",
+        "href": "https://github.com/LeonidTape/WebRegistry",
+        "label": {
+          "ru": "Проект на GitHub",
+          "sr": "",
+          "en": ""
         }
       }
     ],
@@ -1090,6 +1126,58 @@ window.WORKS = [
         },
         "text": {
           "ru": "SHA-256 файла и подпись через WinVerifyTrust, включая имя издателя из сертификата. Статус «валидна» означает корректность подписи, но не совпадение с ожидаемым издателем. Это проверяет пользователь.\nИмпорты и цепочки действий: внедрение в процесс, скачивание с запуском, закрепление в системе, перехват ввода с отправкой данных, шифрование с текстом выкупа, удаление теней и бэкапов.\nСтроки в ASCII и UTF-16LE, включая литералы .NET-сборок.\nURL, домены и IP-адреса из строк. Адреса сверяются с базой доверенных источников, поэтому YouTube, GitHub и CDN не считаются подозрительными.\nСтруктурные признаки упаковщиков: RWX-секции, высокая энтропия, нетипичная точка входа. Для неподписанного файла они дают не больше 5 баллов. Для подписанного только показываются.\nСобственный файл Dissar: программа узнаёт себя по пути и SHA-256 и не оценивает собственные сигнатуры.\nРежим разбора кода (переключатель Disassemble) делает статический проход по машинному коду x86 и x64. Программа обходит код рекурсивно от точки входа, экспортов, TLS-callback и записей исключений. Результаты выводятся на вкладках «Код» и «Листинг», у каждой находки есть адрес и инструкция-основание. Файл при этом не загружается как модуль и не запускается.\n\nКнопка с иконкой робота копирует в буфер обмена готовый запрос для нейросети с данными отчёта: хешем, подписью, баллами, признаками, адресами и находками разбора. Листинг туда не попадает, вместо него передаются до 100 находок.\n\nЗагрузка файлов по ссылке тоже безопасна. Dissar принимает только HTTPS, не переходит по редиректам, ограничивает размер 64 МиБ и никогда не открывает и не запускает скачанный файл.\n\nПодробнее на странице Github https://github.com/LeonidTape/dissar"
+        }
+      },
+      {
+        "type": "button",
+        "href": "https://github.com/LeonidTape/dissar",
+        "label": {
+          "ru": "Проект на GitHub",
+          "sr": "",
+          "en": ""
+        }
+      }
+    ],
+    "cardId": "",
+    "featured": true,
+    "category": "programming",
+    "href": "",
+    "newTab": false,
+    "links": [],
+    "cardTagIds": []
+  },
+  {
+    "id": "work-mwo2anls",
+    "year": "2026",
+    "title": {
+      "ru": "Omen Hub Unlocker"
+    },
+    "summary": {
+      "ru": "Простая утилита для обхода блокировки Omen Hub в России и других регионах"
+    },
+    "cover": "assets/uploads/works/work-mwo2anls/1795123733153-logo.png",
+    "blocks": [
+      {
+        "type": "text",
+        "heading": {
+          "ru": "Omen Hub Unlocker"
+        },
+        "text": {
+          "ru": "Простая программа, которая блокирует сетевой доступ для исполняемых файлов OMEN Command Center через брандмауэр Windows\n\nО программе\nПрограмма самостоятельно находит расположение OMEN Command Center и блокирует весь его входящий и исходящий трафик. При необходимости можно откатить изменения.\n\nИспользование\nЗапустите omen hub unlocker.exe от имени администратора\nПрограмма сама найдёт папку OMEN. Найденный путь появится в строке статуса\nНажмите кнопку «Разблокировать»\nНажмите «Откатить», чтобы удалить созданные правила\n\nОткат\nОткат читает %ProgramData%\\OmenNetBlock\\rules.txt, удаляет каждое правило через netsh advfirewall firewall delete rule и затем удаляет сам журнал. Правила, созданные вручную или другими программами, не затрагиваются"
+        }
+      },
+      {
+        "type": "image",
+        "src": "assets/uploads/works/work-mwo2anls/1795123975163-1234.png",
+        "caption": {}
+      },
+      {
+        "type": "button",
+        "href": "https://github.com/LeonidTape/omenhubunlocker/releases/tag/1.0",
+        "label": {
+          "ru": "Скачать на GitHub",
+          "sr": "",
+          "en": ""
         }
       }
     ],

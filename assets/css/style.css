@@ -444,6 +444,11 @@ b {
   transform: translateY(0) scale(0.99);
 }
 
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .tiles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -925,6 +930,14 @@ footer {
 
 .w-image {
   margin: 0;
+}
+
+.w-button {
+  display: flex;
+}
+
+.w-button .btn {
+  margin-top: 0;
 }
 
 .w-image a,

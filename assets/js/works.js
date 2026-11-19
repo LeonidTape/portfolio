@@ -75,7 +75,26 @@
     return 'https://vk.com/video_ext.php?oid=' + m[1] + '&id=' + m[2] + '&hd=2';
   }
 
+  function resolveLink(ref) {
+    if (!ref) return '';
+    var m = /^global:(.+)$/.exec(ref);
+    if (!m) return ref;
+    var links = (window.SITE_CONFIG && window.SITE_CONFIG.links) || {};
+    if (links[m[1]] && links[m[1]].href) return links[m[1]].href;
+    var custom = (links.custom || []).filter(function (c) { return c.id === m[1]; })[0];
+    return custom ? custom.href : '';
+  }
+
   function renderBlock(b, lang, base) {
+    if (b.type === 'button') {
+      var label = pick(b.label, lang);
+      var href = resolveLink(b.href);
+      if (!label || !href) return '';
+      var ext = /^https?:/.test(href);
+      return '<div class="w-button"><a class="btn" href="' + esc(href) + '"' +
+        (ext ? ' target="_blank" rel="noopener"' : '') + '>' + esc(label) + '</a></div>';
+    }
+
     if (b.type === 'text') {
       var heading = pick(b.heading, lang);
       var body = paragraphs(pick(b.text, lang));
@@ -160,10 +179,12 @@
 
     var hero = '<div class="hero w-hero">' +
       (work.year ? '<p class="role">' + esc(work.year) + '</p>' : '') +
+      '<div class="w-title-row">' +
+      (work.cover ? '<img class="w-icon" src="' + esc(src(work.cover, base)) + '" alt="">' : '') +
       '<h1>' + esc(title) + '</h1>' +
+      '</div>' +
       (summary ? '<p class="lead">' + esc(summary) + '</p>' : '') +
       tagsHtml(work, lang) +
-      (work.cover ? '<img class="cover" src="' + esc(src(work.cover, base)) + '" alt="' + esc(title) + '">' : '') +
       '</div>';
 
     var blocks = (work.blocks || []).map(function (b) { return renderBlock(b, lang, base); }).join('');
